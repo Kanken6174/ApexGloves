@@ -227,8 +227,153 @@
                   Foreground="black"
                   HorizontalAlignment="Left"
                   Margin="135,348,0,0"
-                  VerticalAlignment="Top"
-                   />
-
+                  VerticalAlignment="Top" />
+        <ProgressBar x:Name="pinkieLeft_Copy"
+                     HorizontalAlignment="Left"
+                     Height="19"
+                     Margin="626,615,0,0"
+                     VerticalAlignment="Top"
+                     Width="118"
+                     Value="50"
+                     RenderTransformOrigin="0.5,0.5"
+                     Maximum="1023">
+            <ProgressBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="0.956"
+                                    ScaleX="-1.046" />
+                    <SkewTransform />
+                    <RotateTransform Angle="90" />
+                    <TranslateTransform />
+                </TransformGroup>
+            </ProgressBar.RenderTransform>
+        </ProgressBar>
+        <ProgressBar x:Name="ringLeft_Copy"
+                     HorizontalAlignment="Left"
+                     Height="19"
+                     Margin="585,596,0,0"
+                     VerticalAlignment="Top"
+                     Width="145"
+                     Value="50"
+                     RenderTransformOrigin="0.5,0.5"
+                     Maximum="1023">
+            <ProgressBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="0.956"
+                                    ScaleX="-1.046" />
+                    <SkewTransform />
+                    <RotateTransform Angle="90" />
+                    <TranslateTransform />
+                </TransformGroup>
+            </ProgressBar.RenderTransform>
+        </ProgressBar>
+        <ProgressBar x:Name="middleLeft_Copy"
+                     HorizontalAlignment="Left"
+                     Height="19"
+                     Margin="544,586,0,0"
+                     VerticalAlignment="Top"
+                     Width="164"
+                     Value="50"
+                     RenderTransformOrigin="0.5,0.5"
+                     Maximum="1023">
+            <ProgressBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="0.956"
+                                    ScaleX="-1.046" />
+                    <SkewTransform />
+                    <RotateTransform Angle="90" />
+                    <TranslateTransform />
+                </TransformGroup>
+            </ProgressBar.RenderTransform>
+        </ProgressBar>
+        <ProgressBar x:Name="indexLeft_Copy"
+                     HorizontalAlignment="Left"
+                     Height="19"
+                     Margin="522,591,0,0"
+                     VerticalAlignment="Top"
+                     Width="146"
+                     Value="50"
+                     RenderTransformOrigin="0.5,0.5"
+                     Maximum="1023">
+            <ProgressBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="0.956"
+                                    ScaleX="-1.046" />
+                    <SkewTransform />
+                    <RotateTransform Angle="90" />
+                    <TranslateTransform />
+                </TransformGroup>
+            </ProgressBar.RenderTransform>
+        </ProgressBar>
+        <ProgressBar x:Name="thumbXLeft_Copy"
+                     HorizontalAlignment="Left"
+                     Height="29"
+                     Margin="508,638,0,0"
+                     VerticalAlignment="Top"
+                     Width="100"
+                     Value="50"
+                     RenderTransformOrigin="0.5,0.5"
+                     Maximum="1023">
+            <ProgressBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="0.956"
+                                    ScaleX="-1.046" />
+                    <SkewTransform />
+                    <RotateTransform Angle="90" />
+                    <TranslateTransform />
+                </TransformGroup>
+            </ProgressBar.RenderTransform>
+        </ProgressBar>
+        <ProgressBar x:Name="thumbYLeft_Copy"
+                     HorizontalAlignment="Left"
+                     Height="29"
+                     Margin="499,714,0,0"
+                     VerticalAlignment="Top"
+                     Width="27"
+                     Value="50"
+                     RenderTransformOrigin="1.333,0.5"
+                     Maximum="1023">
+            <ProgressBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="-1" />
+                    <SkewTransform />
+                    <RotateTransform />
+                    <TranslateTransform />
+                </TransformGroup>
+            </ProgressBar.RenderTransform>
+        </ProgressBar>
+        <Ellipse x:Name="StatusElipse_Copy1"
+                 HorizontalAlignment="Center"
+                 Height="100"
+                 Stroke="Black"
+                 Fill="red"
+                 VerticalAlignment="Center"
+                 Width="100"
+                 Margin="585,700,115,45"
+                 RenderTransformOrigin="0.5,-1.635">
+            <Ellipse.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="-1" />
+                    <SkewTransform />
+                    <RotateTransform />
+                    <TranslateTransform />
+                </TransformGroup>
+            </Ellipse.RenderTransform>
+        </Ellipse>
+        <Canvas x:Name="RightGimball"
+                HorizontalAlignment="Left"
+                Height="105"
+                Margin="581,698,0,0"
+                VerticalAlignment="Top"
+                Width="110">
+            <Ellipse x:Name="targetR"
+                     HorizontalAlignment="Center"
+                     Height="30"
+                     Stroke="Black"
+                     Fill="white"
+                     VerticalAlignment="Center"
+                     Width="30"
+                     Canvas.Top="40"
+                     Canvas.Left="40" />
+        </Canvas>
     </Grid>
 </UserControl>
