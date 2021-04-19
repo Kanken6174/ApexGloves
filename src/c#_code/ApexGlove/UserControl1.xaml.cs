@@ -27,7 +27,8 @@ namespace ApexGlove
         int[] oldR = new int[6] { 0, 0, 0, 0, 0 ,0};
         int[] oldL = new int[6] { 0, 0, 0, 0, 0 ,0};
         public bool runTasks = true;
-
+        public bool RranOnce = false;
+        public bool LranOnce = false;
         public struct Glove //data structure for a full Apex glove
         {
             public int[] values;
@@ -183,17 +184,12 @@ namespace ApexGlove
 
         private void serialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-          /*  try
-            {*/
+
                 SerialPort SpIn = (SerialPort)sender;
                 serialDataIn = SpIn.ReadLine();
                 Application.Current.Dispatcher.Invoke(new Action(() => { COMDATA.Text = serialDataIn; }));
                 ProcessData(sender, e);
-            //}
-            /*catch (Exception err)
-            {
-                MessageBox.Show("DataReceivedException " + err.Message);
-            }*/
+
         }
 
         private void ProcessData(object sender, EventArgs e)
@@ -230,12 +226,19 @@ namespace ApexGlove
 
                             if (glove.rightHand)
                             {
-                                for (int i = 0; i < 5; i++)
+                                if (RranOnce)
                                 {
-                                    if (glove.values[i] >= 1020 || glove.values[i] == 0)
+                                    for (int i = 0; i < 5; i++)
                                     {
-                                        glove.values[i] = oldR[i];
+                                        if (glove.values[i] >= 1020 || glove.values[i] == 0 || glove.values[i] > oldR[i] + 100 || glove.values[i] < oldR[i] - 100)
+                                        {
+                                            glove.values[i] = oldR[i];
+                                        }
                                     }
+                                }
+                                else
+                                {
+                                    RranOnce = true;
                                 }
 
                                 pinkieRight.Value = glove.values[0];
@@ -256,12 +259,19 @@ namespace ApexGlove
                             }
                             else
                             {
-                                for (int i = 0; i < 5; i++)
+                                if (LranOnce)
                                 {
-                                    if (glove.values[i] >= 1020 || glove.values[i] == 0)
+                                    for (int i = 0; i < 5; i++)
                                     {
-                                        glove.values[i] = oldL[i];
+                                        if (glove.values[i] >= 1020 || glove.values[i] == 0 || glove.values[i] > oldL[i] + 100 || glove.values[i] < oldL[i] - 100)
+                                        {
+                                            glove.values[i] = oldL[i];
+                                        }
                                     }
+                                }
+                                else
+                                {
+                                    LranOnce = true;
                                 }
 
                                 pinkieLeft.Value = glove.values[0];
