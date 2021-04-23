@@ -7,6 +7,8 @@ using System.IO.Ports;
 using System.Linq;
 using System.Windows.Media.Media3D;
 using System.Windows.Media.Animation;
+using System.IO.Pipes;
+using System.IO;
 
 
 
@@ -45,6 +47,9 @@ namespace ApexGlove
         public bool runTasks = true;
         public bool RranOnce = false;
         public bool LranOnce = false;
+
+
+
         public struct Glove //data structure for a full Apex glove
         {
             public int[] values;
@@ -446,6 +451,35 @@ namespace ApexGlove
 
         }   //Bs stands for bottoms, not whatever you were thinking, this sets the mins and maxes
 
+        public void sendToDriver(int[] arr)
+        {
+            string strok = "";
+
+            for(int i = 0; i <= arr.Length && i <= indexAlph.Length; i++)
+            {
+                strok += indexAlph[i];
+                strok += arr[i];
+            }
+            var toDriver = new NamedPipeServerStream("my-very-cool-pipe-example", PipeDirection.InOut, 1, PipeTransmissionMode.Byte);
+            var streamToDriver = new StreamReader(toDriver);
+
+            toDriver.WaitForConnection();
+
+            var writer = new StreamWriter(toDriver);
+            writer.Write(arr);
+            writer.Write((char)0);
+            writer.Flush();
+            toDriver.WaitForPipeDrain();
+            
+            string returned = streamToDriver.ReadLine();
+
+            if (returned != "ok")
+            {
+                //error handling
+            }
+
+            toDriver.Dispose();
+        }
     }
     public class TextboxText
     {
