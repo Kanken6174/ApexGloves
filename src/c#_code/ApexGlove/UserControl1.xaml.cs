@@ -39,7 +39,9 @@ namespace ApexGlove
         public String dataBuf;
         int[] indexes = new int[12];     //index of the sensor value in the received serial buffer
         string[] Sensordata = new string[12]; //actual value measuered by the sensor
-        static readonly char[] indexAlph = new[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L' };//data indexes used by the arduino nano's serial code
+        static readonly char[] indexAlph = new[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+                                                   'N' , 'O' , 'P' , 'Q' , 'R' , 'S', 'T', 'U', 'V', 'W', 'Y', 'Z' };//data indexes used by the arduino nano's serial code
+
         static readonly String[] baudRates = new[] { "38400" };
         static int TTW = 50;    //time elapsed between each data request
         static int[,] oldR = new int[6, 4];
@@ -264,8 +266,8 @@ namespace ApexGlove
                                 for (int i = 0; i < 5; i++)
                                 {
                                     glove.values[i] -= setters[1, i];
-                                /*    if (maxes[i, 1] < glove.values[i]) glove.values[i] = maxes[1, i];
-                                    if (mins[i, 1] > glove.values[i]) glove.values[i] = mins[1, i];*/
+                                    /*    if (maxes[i, 1] < glove.values[i]) glove.values[i] = maxes[1, i];
+                                        if (mins[i, 1] > glove.values[i]) glove.values[i] = mins[1, i];*/
                                 }
 
                                 //Saves finger values to the UI
@@ -276,12 +278,12 @@ namespace ApexGlove
 
                                 //Save gyro/accelerometer values to the UI
                                 int tempX = (glove.values[7] / 400) + 30;//y axis
-                                //targetR.SetValue(Canvas.LeftProperty, (double)tempY);
+                                targetR.SetValue(Canvas.LeftProperty, (double)tempX);
                                 int tempY = (glove.values[6] / 400) + 40;//x axis
-                                //targetR.SetValue(Canvas.TopProperty, (double)tempX);
+                                targetR.SetValue(Canvas.TopProperty, (double)tempY);
                                 int tempZ = (glove.values[8] / 400) + 30;//z axis
 
-                                rotate(true, tempX, tempY, tempZ);
+                                //rotate(true, tempX, tempY, tempZ);
 
                                 for (int i = 0; i < 6; i++)
                                 {
@@ -307,26 +309,26 @@ namespace ApexGlove
                                 for (int i = 6; i < 10; i++)
                                 {
                                     glove.values[i] -= setters[1, i];
-                                   /* if (maxes[i, 0] < glove.values[i]) glove.values[i] = maxes[i, 0];
-                                    if (mins[i, 0] > glove.values[i]) glove.values[i] = mins[i, 0];*/
+                                    /* if (maxes[i, 0] < glove.values[i]) glove.values[i] = maxes[i, 0];
+                                     if (mins[i, 0] > glove.values[i]) glove.values[i] = mins[i, 0];*/
                                 }
                                 //Saves finger values to the UI
                                 for (var z = 0; z < 6; z++)
                                 {
-                                    ((ProgressBar)this.FindName(((UI)(z+6)).ToString())).Value = glove.values[z];
+                                    ((ProgressBar)this.FindName(((UI)(z + 6)).ToString())).Value = glove.values[z];
                                 }
 
                                 //Save gyro/accelerometer values to the UI
                                 int tempY = (glove.values[6] / 400);//x axis
                                 Yb.Text = tempY.ToString();
-                                // targetL.SetValue(Canvas.TopProperty, (double)tempX);
+                                targetL.SetValue(Canvas.TopProperty, (double)tempY);
                                 int tempX = (glove.values[7] / 400);//y axis
                                 Xb.Text = tempX.ToString();
-                                // targetL.SetValue(Canvas.LeftProperty, (double)tempY);
+                                targetL.SetValue(Canvas.LeftProperty, (double)tempX);
                                 int tempZ = (glove.values[8] / 400);//z axis
                                 Zb.Text = tempZ.ToString();
 
-                                rotate(false, tempX, tempY, tempZ);
+                                //rotate(false, tempX, tempY, tempZ);
 
                                 for (int i = 0; i < 6; i++)
                                 {
@@ -336,6 +338,7 @@ namespace ApexGlove
                                     }
                                     oldL[i, 0] = glove.values[i];
                                 }
+                                // sendToDriver(glove.values);
                             }
                         }));
                 }
@@ -371,7 +374,7 @@ namespace ApexGlove
             LranOnce = false; //calibration will be set at next query
             setters = new int[,] { { 1023, 1023, 1023, 1023, 1023, 1023, 1023, 1023, 1023, 1023, 1023 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } };
 
-            for(int i = 0; i < 5; i++)
+            for (int i = 0; i < 5; i++)
             {
                 ((ProgressBar)this.FindName(((UI)(i)).ToString())).Maximum = 1023;
             }
@@ -385,23 +388,24 @@ namespace ApexGlove
             {
                 ((ProgressBar)this.FindName(((UI)(i)).ToString())).Maximum = 1023;
             }
-        } 
+        }
 
         private void rotate(bool right, double x, double y, double z)
         {
 
-            if (right)
-            {
-                RX.Angle = x;
-                RY.Angle = y;
-                RZ.Angle = z;
-            }
-            else
-            {
-                LX.Angle = x;
-                LY.Angle = y;
-                LZ.Angle = z;
-            }
+            /*            if (right)
+                        {
+                            RX.Angle = x;
+                            RY.Angle = y;
+                            RZ.Angle = z;
+                        }
+                        else
+                        {
+                            LX.Angle = x;
+                            LY.Angle = y;
+                            LZ.Angle = z;
+                        }
+                    */
         }
 
         private void CalibrateTÄndBs(object sender, RoutedEventArgs e)
@@ -441,7 +445,7 @@ namespace ApexGlove
                 if (min)
                 {
                     setters[1, i] = (int)(((ProgressBar)this.FindName(UIname)).Value);
-                    ((ProgressBar)this.FindName(UIname)).Maximum = setters[1, i]+100;
+                    ((ProgressBar)this.FindName(UIname)).Maximum = setters[1, i] + 100;
                 }
                 else
                 {
@@ -453,32 +457,38 @@ namespace ApexGlove
 
         public void sendToDriver(int[] arr)
         {
-            string strok = "";
-
-            for(int i = 0; i <= arr.Length && i <= indexAlph.Length; i++)
+            var piper = Task.Run(() =>
             {
-                strok += indexAlph[i];
-                strok += arr[i];
-            }
-            var toDriver = new NamedPipeServerStream("my-very-cool-pipe-example", PipeDirection.InOut, 1, PipeTransmissionMode.Byte);
-            var streamToDriver = new StreamReader(toDriver);
+                string strok = "";
 
-            toDriver.WaitForConnection();
+                for (int i = 0; i <= arr.Length && i <= indexAlph.Length; i++)
+                {
+                    strok += indexAlph[i];
+                    strok += arr[i];
+                }
+                var toDriver = new NamedPipeServerStream("ApexPipe", PipeDirection.InOut, 1, PipeTransmissionMode.Byte);
+                var streamToDriver = new StreamReader(toDriver);
 
-            var writer = new StreamWriter(toDriver);
-            writer.Write(arr);
-            writer.Write((char)0);
-            writer.Flush();
-            toDriver.WaitForPipeDrain();
-            
-            string returned = streamToDriver.ReadLine();
+                toDriver.WaitForConnection();
 
-            if (returned != "ok")
-            {
-                //error handling
-            }
+                var writer = new StreamWriter(toDriver);
+                writer.Write(arr);
+                writer.Write((char)0);
+                writer.Flush();
+                toDriver.WaitForPipeDrain();
 
-            toDriver.Dispose();
+                string returned = streamToDriver.ReadLine();
+
+                while (returned != "ok")
+                {
+                    txt.Text = "still awaiting return...";
+                }
+
+                txt.Text = "token received :" + returned;
+
+                toDriver.Dispose();
+            });
+            Task.WaitAll(piper);
         }
     }
     public class TextboxText

@@ -16,10 +16,10 @@
                  Fill="red"
                  VerticalAlignment="Center"
                  Width="120"
-                 Margin="300,159,380,571"
+                 Margin="345,49,335,681"
                  RenderTransformOrigin="0.5,-1.635" />
         <TextBlock HorizontalAlignment="Left"
-                   Margin="300,288,0,0"
+                   Margin="345,178,0,0"
                    Text="Connected to:"
                    TextWrapping="Wrap"
                    VerticalAlignment="Top"
@@ -27,20 +27,20 @@
                    RenderTransformOrigin="0.412,-2.25" />
         <TextBlock x:Name="COMID"
                    HorizontalAlignment="Left"
-                   Margin="385,288,0,0"
+                   Margin="430,178,0,0"
                    Text=""
                    TextWrapping="Wrap"
                    VerticalAlignment="Top"
                    Width="85" />
         <TextBlock HorizontalAlignment="Left"
-                   Margin="300,313,0,0"
+                   Margin="345,203,0,0"
                    TextWrapping="Wrap"
                    VerticalAlignment="Top"
                    RenderTransformOrigin="0.49,-3.938"><Run Language="fr-fr"
                                                             Text="Raw data:" /></TextBlock>
         <TextBlock x:Name="COMDATA"
                    HorizontalAlignment="Left"
-                   Margin="356,320,0,0"
+                   Margin="401,210,0,0"
                    TextWrapping="Wrap"
                    VerticalAlignment="Top"
                    Width="104"
@@ -49,7 +49,7 @@
         <Button x:Name="button_open"
                 Content="Connect"
                 HorizontalAlignment="Left"
-                Margin="135,279,0,0"
+                Margin="180,169,0,0"
                 VerticalAlignment="Top"
                 Height="22"
                 Width="65"
@@ -58,7 +58,7 @@
         <ComboBox x:Name="comboBox_comPort"
                   SelectedItem="COM10"
                   HorizontalAlignment="Left"
-                  Margin="10,279,0,0"
+                  Margin="55,169,0,0"
                   VerticalAlignment="Top"
                   Width="120"
                   DropDownOpened="comboBox_comPort_DropDown"
@@ -68,7 +68,7 @@
         <ComboBox x:Name="comboBox_baudRate"
                   SelectedItem="38400"
                   HorizontalAlignment="Left"
-                  Margin="10,252,0,0"
+                  Margin="55,142,0,0"
                   VerticalAlignment="Top"
                   Width="120"
                   DropDownOpened="comboBox_baudRate_DropDown">
@@ -76,7 +76,7 @@
         <Button x:Name="button_close"
                 Content="Disconnect"
                 HorizontalAlignment="Left"
-                Margin="205,279,0,0"
+                Margin="250,169,0,0"
                 VerticalAlignment="Top"
                 Height="22"
                 Width="65"
@@ -85,27 +85,27 @@
         <Button Content="Request data"
                 x:Name="req_button"
                 HorizontalAlignment="Left"
-                Margin="135,311,0,0"
+                Margin="180,201,0,0"
                 VerticalAlignment="Top"
                 Width="135"
                 IsEnabled="False"
                 Click="requestData" />
         <Button Content="Reset calibration"
                 HorizontalAlignment="Left"
-                Margin="135,375,0,0"
+                Margin="180,265,0,0"
                 VerticalAlignment="Top"
                 Width="105"
                 Click="Cal_left" />
         <Button Content="Reset calibration"
                 HorizontalAlignment="Left"
-                Margin="586,375,0,0"
+                Margin="631,265,0,0"
                 VerticalAlignment="Top"
                 Width="105"
                 Click="Cal_right" />
         <ProgressBar x:Name="pinkieLeft"
                      HorizontalAlignment="Left"
                      Height="20"
-                     Margin="15,610,0,0"
+                     Margin="60,500,0,0"
                      VerticalAlignment="Top"
                      Width="130"
                      Value="50"
@@ -123,7 +123,7 @@
         <ProgressBar x:Name="ringLeft"
                      HorizontalAlignment="Left"
                      Height="20"
-                     Margin="30,590,0,0"
+                     Margin="75,480,0,0"
                      VerticalAlignment="Top"
                      Width="160"
                      Value="50"
@@ -141,7 +141,7 @@
         <ProgressBar x:Name="middleLeft"
                      HorizontalAlignment="Left"
                      Height="20"
-                     Margin="55,580,0,0"
+                     Margin="100,470,0,0"
                      VerticalAlignment="Top"
                      Width="180"
                      Value="50"
@@ -159,7 +159,7 @@
         <ProgressBar x:Name="indexLeft"
                      HorizontalAlignment="Left"
                      Height="20"
-                     Margin="99,585,0,0"
+                     Margin="144,475,0,0"
                      VerticalAlignment="Top"
                      Width="160"
                      Value="50"
@@ -177,7 +177,7 @@
         <ProgressBar x:Name="thumbXLeft"
                      HorizontalAlignment="Left"
                      Height="30"
-                     Margin="165,635,0,0"
+                     Margin="210,525,0,0"
                      VerticalAlignment="Top"
                      Width="110"
                      Value="50"
@@ -195,7 +195,7 @@
         <ProgressBar x:Name="thumbYLeft"
                      HorizontalAlignment="Left"
                      Height="30"
-                     Margin="205,715,0,0"
+                     Margin="250,605,0,0"
                      VerticalAlignment="Top"
                      Width="30"
                      Value="50"
@@ -210,105 +210,24 @@
                  Fill="red"
                  VerticalAlignment="Center"
                  Width="110"
-                 Margin="80,700,610,40"
+                 Margin="125,590,565,150"
                  RenderTransformOrigin="0.5,-1.635" />
         <Canvas x:Name="LeftGimball"
                 HorizontalAlignment="Left"
                 Height="105"
-                Margin="80,700,0,0"
+                Margin="125,590,0,0"
                 VerticalAlignment="Top"
-                Width="110">
-            <Ellipse x:Name="targetL"
-                     HorizontalAlignment="Center"
-                     Height="30"
-                     Stroke="Transparent"
-                     Fill="Transparent"
-                     VerticalAlignment="Center"
-                     Width="30"
-                     Canvas.Top="40"
-                     Canvas.Left="40" />
-            <Viewport3D x:Name="viewport3D1"
-                        Height="90"
-                        Canvas.Left="15"
-                        Canvas.Top="10"
-                        Width="80">
-                <Viewport3D.Camera>
-                    <PerspectiveCamera x:Name="CameraL"
-                                       Position="5, 6, 4"
-                                       LookDirection="-1, -1, -1"
-                                       UpDirection="1, 0, 0"
-                                       FieldOfView="60">
-                        <PerspectiveCamera.Transform>
-                            <Transform3DGroup>
-                                <RotateTransform3D>
-                                    <RotateTransform3D.Rotation>
-                                        <AxisAngleRotation3D Axis="1 0 0"
-                                                             Angle="45"
-                                                             x:Name="LZ" />
-                                    </RotateTransform3D.Rotation>
-                                </RotateTransform3D>
-                                <RotateTransform3D>
-                                    <RotateTransform3D.Rotation>
-                                        <AxisAngleRotation3D Axis="0 1 0"
-                                                             Angle="0"
-                                                             x:Name="LX" />
-                                    </RotateTransform3D.Rotation>
-                                </RotateTransform3D>
-                                <RotateTransform3D>
-                                    <RotateTransform3D.Rotation>
-                                        <AxisAngleRotation3D x:Name="LY"
-                                                             Axis="0 0 1"
-                                                             Angle="0" />
-                                    </RotateTransform3D.Rotation>
-                                </RotateTransform3D>
-
-                            </Transform3DGroup>
-                        </PerspectiveCamera.Transform>
-                    </PerspectiveCamera>
-                </Viewport3D.Camera>
-                <ModelVisual3D x:Name="MyModelR">
-                    <ModelVisual3D.Content>
-                        <DirectionalLight x:Name="dirLightMain"
-                                          Direction="0,0,-1" />
-                    </ModelVisual3D.Content>
-                </ModelVisual3D>
-                <ModelVisual3D>
-                    <ModelVisual3D.Content>
-                        <GeometryModel3D>
-                            <GeometryModel3D.Geometry>
-                                <MeshGeometry3D x:Name="meshMainR"
-                                                Positions="0,0,0 3,0,0 0,3,0 3,3,0 0,0,3 3,0,3 0,3,3 3,3,3"
-                                                TriangleIndices="2 3 1  2 1 0  7 1 3  7 5 1  6 5 7  6 4 5  6 2 0  2 0 4  2 7 3  2 6 7  0 1 5  0 5 4" />
-                            </GeometryModel3D.Geometry>
-                            <GeometryModel3D.Material>
-                                <DiffuseMaterial x:Name="matDiffuseMainR"
-                                                 Brush="White" />
-                            </GeometryModel3D.Material>
-
-                            <GeometryModel3D.Transform>
-                                <RotateTransform3D>
-                                    <RotateTransform3D.Rotation>
-                                        <AxisAngleRotation3D x:Name="RangR"
-                                                             Axis="0,1,0"
-                                                             Angle="0" />
-                                    </RotateTransform3D.Rotation>
-                                </RotateTransform3D>
-                            </GeometryModel3D.Transform>
-                        </GeometryModel3D>
-                    </ModelVisual3D.Content>
-                </ModelVisual3D>
-            </Viewport3D>
-        </Canvas>
+                Width="110" />
         <CheckBox x:Name="Autoget"
                   Content="Auto-request"
                   Foreground="black"
                   HorizontalAlignment="Left"
-                  Margin="135,348,0,0"
+                  Margin="180,238,0,0"
                   VerticalAlignment="Top" />
         <ProgressBar x:Name="pinkieRight"
                      HorizontalAlignment="Left"
                      Height="19"
-                     Margin="626,615,0,0"
+                     Margin="671,505,0,0"
                      VerticalAlignment="Top"
                      Width="118"
                      Value="50"
@@ -327,7 +246,7 @@
         <ProgressBar x:Name="ringRight"
                      HorizontalAlignment="Left"
                      Height="19"
-                     Margin="585,596,0,0"
+                     Margin="630,486,0,0"
                      VerticalAlignment="Top"
                      Width="145"
                      Value="50"
@@ -346,7 +265,7 @@
         <ProgressBar x:Name="middleRight"
                      HorizontalAlignment="Left"
                      Height="19"
-                     Margin="544,586,0,0"
+                     Margin="589,476,0,0"
                      VerticalAlignment="Top"
                      Width="164"
                      Value="50"
@@ -365,7 +284,7 @@
         <ProgressBar x:Name="indexRight"
                      HorizontalAlignment="Left"
                      Height="19"
-                     Margin="522,591,0,0"
+                     Margin="567,481,0,0"
                      VerticalAlignment="Top"
                      Width="146"
                      Value="50"
@@ -384,7 +303,7 @@
         <ProgressBar x:Name="thumbXRight"
                      HorizontalAlignment="Left"
                      Height="29"
-                     Margin="508,638,0,0"
+                     Margin="553,528,0,0"
                      VerticalAlignment="Top"
                      Width="100"
                      Value="50"
@@ -403,7 +322,7 @@
         <ProgressBar x:Name="thumbYRight"
                      HorizontalAlignment="Left"
                      Height="29"
-                     Margin="499,714,0,0"
+                     Margin="544,604,0,0"
                      VerticalAlignment="Top"
                      Width="27"
                      Value="50"
@@ -425,7 +344,7 @@
                  Fill="red"
                  VerticalAlignment="Center"
                  Width="100"
-                 Margin="585,700,115,45"
+                 Margin="630,590,70,155"
                  RenderTransformOrigin="0.5,-1.635">
             <Ellipse.RenderTransform>
                 <TransformGroup>
@@ -439,7 +358,7 @@
         <Canvas x:Name="RightGimball"
                 HorizontalAlignment="Left"
                 Height="105"
-                Margin="581,698,0,0"
+                Margin="626,588,0,0"
                 VerticalAlignment="Top"
                 Width="110">
             <Ellipse x:Name="targetR"
@@ -451,140 +370,92 @@
                      Width="30"
                      Canvas.Top="40"
                      Canvas.Left="40" />
-            <Viewport3D x:Name="viewport3D1_Copy"
-                        Height="90"
-                        Canvas.Left="24"
-                        Canvas.Top="7"
-                        Width="75">
-                <Viewport3D.Camera>
-                    <PerspectiveCamera x:Name="CameraR"
-                                       Position="4, 6, 8"
-                                       LookDirection="-1.5, -2, -3"
-                                       UpDirection="0, 1, 0"
-                                       FieldOfView="60">
-                        <PerspectiveCamera.Transform>
-                            <Transform3DGroup>
-                                <RotateTransform3D>
-                                    <RotateTransform3D.Rotation>
-                                        <AxisAngleRotation3D Axis="1 0 0"
-                                                             Angle="0"
-                                                             x:Name="RY" />
-                                    </RotateTransform3D.Rotation>
-                                </RotateTransform3D>
-                                <RotateTransform3D>
-                                    <RotateTransform3D.Rotation>
-                                        <AxisAngleRotation3D Axis="1 0 0"
-                                                             Angle="0"
-                                                             x:Name="RX" />
-                                    </RotateTransform3D.Rotation>
-                                </RotateTransform3D>
-                                <RotateTransform3D>
-                                    <RotateTransform3D.Rotation>
-                                        <AxisAngleRotation3D x:Name="RZ"
-                                                             Axis="0 0 1"
-                                                             Angle="0" />
-                                    </RotateTransform3D.Rotation>
-                                </RotateTransform3D>
-
-                            </Transform3DGroup>
-                        </PerspectiveCamera.Transform>
-                    </PerspectiveCamera>
-                </Viewport3D.Camera>
-                <ModelVisual3D x:Name="MyModelL">
-                    <ModelVisual3D.Content>
-                        <DirectionalLight x:Name="dirLightMain1"
-                                          Direction="-1,-1,-1" />
-                    </ModelVisual3D.Content>
-                </ModelVisual3D>
-                <ModelVisual3D>
-                    <ModelVisual3D.Content>
-                        <GeometryModel3D>
-                            <GeometryModel3D.Geometry>
-                                <MeshGeometry3D x:Name="meshMainR1"
-                                                Positions="0,0,0 3,0,0 0,3,0 3,3,0 0,0,3 3,0,3 0,3,3 3,3,3"
-                                                TriangleIndices="2 3 1  2 1 0  7 1 3  7 5 1  6 5 7  6 4 5  6 2 0  2 0 4  2 7 3  2 6 7  0 1 5  0 5 4" />
-                            </GeometryModel3D.Geometry>
-                            <GeometryModel3D.Material>
-                                <DiffuseMaterial x:Name="matDiffuseMainR1"
-                                                 Brush="White" />
-                            </GeometryModel3D.Material>
-                            <GeometryModel3D.Transform>
-                                <RotateTransform3D>
-                                    <RotateTransform3D.Rotation>
-                                        <AxisAngleRotation3D x:Name="Rangl"
-                                                             Axis="0,0,0"
-                                                             Angle="40" />
-                                    </RotateTransform3D.Rotation>
-                                </RotateTransform3D>
-                            </GeometryModel3D.Transform>
-
-                        </GeometryModel3D>
-                    </ModelVisual3D.Content>
-                </ModelVisual3D>
-            </Viewport3D>
         </Canvas>
         <ComboBox x:Name="comboBox_comPortR"
                   HorizontalAlignment="Left"
-                  Margin="515,279,0,0"
+                  Margin="560,169,0,0"
                   VerticalAlignment="Top"
                   Width="120"
                   DropDownOpened="comboBox_comPort_DropDown"
-                  SelectedValuePath="Content" 
-                  SelectedItem="COM9"/>
+                  SelectedValuePath="Content"
+                  SelectedItem="COM9" />
         <ComboBox x:Name="comboBox_baudRateR"
                   HorizontalAlignment="Left"
-                  Margin="515,252,0,0"
+                  Margin="560,142,0,0"
                   VerticalAlignment="Top"
                   Width="120"
                   DropDownOpened="comboBox_baudRate_DropDown"
                   SelectedValuePath="Content"
-                  SelectedItem="38400"/>
+                  SelectedItem="38400" />
         <TextBlock x:Name="Xb"
-            HorizontalAlignment="Left"
-                   Margin="218,754,0,0"
+                   HorizontalAlignment="Left"
+                   Margin="263,644,0,0"
                    TextWrapping="Wrap"
                    Text="x coords here"
                    VerticalAlignment="Top" />
         <TextBlock x:Name="Yb"
                    HorizontalAlignment="Left"
-                   Margin="218,775,0,0"
+                   Margin="263,665,0,0"
                    TextWrapping="Wrap"
                    Text="y coords here"
                    VerticalAlignment="Top" />
         <TextBlock x:Name="Zb"
                    HorizontalAlignment="Left"
-                   Margin="218,795,0,0"
+                   Margin="263,685,0,0"
                    TextWrapping="Wrap"
                    Text="z coords here"
                    VerticalAlignment="Top" />
         <Button x:Name="CTL"
-            Content="Calibrate top L"
+                Content="Calibrate top L"
                 HorizontalAlignment="Left"
-                Margin="135,400,0,0"
+                Margin="180,290,0,0"
                 VerticalAlignment="Top"
                 Width="105"
                 Click="CalibrateTÄndBs" />
         <Button x:Name="CBL"
-            Content="Calibrate bottom L"
+                Content="Calibrate bottom L"
                 HorizontalAlignment="Left"
-                Margin="135,425,0,0"
+                Margin="180,315,0,0"
                 VerticalAlignment="Top"
                 Width="105"
                 Click="CalibrateTÄndBs" />
         <Button x:Name="CTR"
-            Content="Calibrate top R"
+                Content="Calibrate top R"
                 HorizontalAlignment="Left"
-                Margin="586,400,0,0"
+                Margin="631,290,0,0"
                 VerticalAlignment="Top"
                 Width="105"
                 Click="CalibrateTÄndBs" />
         <Button x:Name="CBR"
-            Content="Calibrate bottom R"
+                Content="Calibrate bottom R"
                 HorizontalAlignment="Left"
-                Margin="586,425,0,0"
+                Margin="631,315,0,0"
                 VerticalAlignment="Top"
                 Width="105"
                 Click="CalibrateTÄndBs" />
+        <RichTextBox HorizontalAlignment="Left"
+                     Height="85"
+                     Margin="285,370,0,0"
+                     VerticalAlignment="Top"
+                     Width="280"
+                     x:Name="TxtBox"
+                     IsReadOnly="True">
+            <FlowDocument>
+                <Paragraph>
+                    <Run x:Name="txt"
+                         Text="Piped data here" />
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+        <Ellipse x:Name="targetL"
+                 HorizontalAlignment="Center"
+                 Height="30"
+                 Stroke="Black"
+                 Fill="White"
+                 VerticalAlignment="Center"
+                 Width="30"
+                 RenderTransformOrigin="3.833,0.667"
+                 Margin="165,630,605,185" />
     </Grid>
 
 </UserControl>
