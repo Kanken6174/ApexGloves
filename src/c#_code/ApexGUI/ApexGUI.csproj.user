@@ -7,12 +7,18 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="UCs\Connections.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="UCs\MainTabViewer.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UCs\Connections.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UCs\MainTabViewer.xaml">

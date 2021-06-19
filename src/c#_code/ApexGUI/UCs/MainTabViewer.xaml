@@ -13,7 +13,9 @@
         </Menu>
         <TabControl Margin="0,25,0,0">
             <TabItem Header="Connections">
-                <Grid Background="#FFE5E5E5" />
+                <Grid Background="#FFE5E5E5">
+                    <local:Connections />
+                </Grid>
             </TabItem>
             <TabItem Header="Delimitor Definitions">
                 <Grid Background="#FFE5E5E5">

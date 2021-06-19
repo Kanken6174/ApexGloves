@@ -28,3 +28,13 @@ Y:\cs\ApexGloves\src\c#_code\ApexGUI\bin\Debug\net5.0-windows\runtimes\win\lib\n
 Y:\cs\ApexGloves\src\c#_code\ApexGUI\bin\Debug\net5.0-windows\ApexLogic.dll
 Y:\cs\ApexGloves\src\c#_code\ApexGUI\bin\Debug\net5.0-windows\ApexLogic.pdb
 Y:\cs\ApexGloves\src\c#_code\ApexGUI\obj\Debug\net5.0-windows\ApexGUI.csproj.CopyComplete
+Y:\cs\ApexGloves\src\c#_code\ApexGUI\bin\Debug\net5.0-windows\System.IO.Ports.dll
+Y:\cs\ApexGloves\src\c#_code\ApexGUI\bin\Debug\net5.0-windows\runtimes\linux-arm\native\libSystem.IO.Ports.Native.so
+Y:\cs\ApexGloves\src\c#_code\ApexGUI\bin\Debug\net5.0-windows\runtimes\linux-arm64\native\libSystem.IO.Ports.Native.so
+Y:\cs\ApexGloves\src\c#_code\ApexGUI\bin\Debug\net5.0-windows\runtimes\linux-x64\native\libSystem.IO.Ports.Native.so
+Y:\cs\ApexGloves\src\c#_code\ApexGUI\bin\Debug\net5.0-windows\runtimes\osx-x64\native\libSystem.IO.Ports.Native.dylib
+Y:\cs\ApexGloves\src\c#_code\ApexGUI\bin\Debug\net5.0-windows\runtimes\linux\lib\netstandard2.0\System.IO.Ports.dll
+Y:\cs\ApexGloves\src\c#_code\ApexGUI\bin\Debug\net5.0-windows\runtimes\osx\lib\netstandard2.0\System.IO.Ports.dll
+Y:\cs\ApexGloves\src\c#_code\ApexGUI\bin\Debug\net5.0-windows\runtimes\win\lib\netstandard2.0\System.IO.Ports.dll
+Y:\cs\ApexGloves\src\c#_code\ApexGUI\obj\Debug\net5.0-windows\UCs\Connections.g.cs
+Y:\cs\ApexGloves\src\c#_code\ApexGUI\obj\Debug\net5.0-windows\UCs\Connections.baml

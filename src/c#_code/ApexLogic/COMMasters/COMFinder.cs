@@ -4,37 +4,73 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Management;
+using System.IO.Ports;
+using System.IO;
 
 namespace ApexLogic.COMMasters
 {
     public class COMFinder
     {
-        internal static List<string> AutodetectArduinoPort()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        internal static async Task<List<string>> AutodetectArduinoPort()
         {
-            ManagementScope connectionScope = new();
-            SelectQuery serialQuery = new("SELECT * FROM Win32_SerialPort");
-            ManagementObjectSearcher searcher = new(connectionScope, serialQuery);
             List<string> ValidPorts = new();
-            try
+            foreach (string str in SerialPort.GetPortNames())
             {
-                foreach (ManagementObject item in searcher.Get())
+                try
                 {
-                    string desc = item["Description"].ToString();
-                    string deviceId = item["DeviceID"].ToString();
-
-                    if (desc.Contains("Arduino") || desc.Contains("CH340"))
+                    string result = new("");
+                    SerialPort sp = new();
+                    sp.ReadTimeout = 50;
+                    sp.WriteTimeout = 50;
+                    sp.PortName = str;
+                    sp.BaudRate = 38400;
+                    try
                     {
-                        ValidPorts.Add(deviceId);
+                        sp.Open();
+                    }
+                    catch(Exception e)
+                    {
+                        //Port was protected
+                    }
+
+                    if (sp.IsOpen)
+                    {
+                        sp.Write("!");
+
+                        try
+                        {
+                            result = sp.ReadLine();
+                            sp.Close();
+                        }
+
+                        catch (TimeoutException ex)
+                        {
+                            sp.Close();
+                            //timeout
+                        }
+                        if (result == "R" || result == "L")
+                        {
+                            ValidPorts.Add(result + str);
+                        }
+                        if (sp.IsOpen)
+                            sp.Close();
                     }
                 }
-                return ValidPorts;
-            }
-            catch (ManagementException)
-            {
-                /* Something went wrong but we'll ignore it */
+                catch (IOException)
+                {
+
+                }
             }
 
-            return null;
+            
+            return ValidPorts;
+
         }
+
     }
+
 }

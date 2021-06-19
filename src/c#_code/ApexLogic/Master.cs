@@ -6,10 +6,15 @@ namespace ApexLogic
 {
     public class Master
     {
-        public List<string> ValidPorts = COMFinder.AutodetectArduinoPort();
+        public List<string> ValidPorts = COMFinder.AutodetectArduinoPort().Result;
         public Master()
         {
              
+        }
+
+        public void RefreshPorts()
+        {
+            ValidPorts = COMFinder.AutodetectArduinoPort().Result;
         }
     }
 }
