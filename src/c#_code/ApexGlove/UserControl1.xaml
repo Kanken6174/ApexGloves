@@ -370,6 +370,24 @@
                      Width="30"
                      Canvas.Top="40"
                      Canvas.Left="40" />
+            <Expander x:Name="arrowR"
+                      Header=""
+                      HorizontalAlignment="Left"
+                      Height="25"
+                      VerticalAlignment="Top"
+                      Width="25"
+                      Canvas.Left="41"
+                      Canvas.Top="42"
+                      RenderTransformOrigin="0.5,0.5">
+                <Expander.RenderTransform>
+                    <TransformGroup >
+                        <ScaleTransform />
+                        <SkewTransform />
+                        <RotateTransform x:Name="arrowRdir" Angle="-180.222" />
+                        <TranslateTransform />
+                    </TransformGroup>
+                </Expander.RenderTransform>
+            </Expander>
         </Canvas>
         <ComboBox x:Name="comboBox_comPortR"
                   HorizontalAlignment="Left"
@@ -456,6 +474,122 @@
                  Width="30"
                  RenderTransformOrigin="3.833,0.667"
                  Margin="165,630,605,185" />
-    </Grid>
+        <!-- ellipses de contact  -->
+        <Ellipse Fill="Yellow"
+                 x:Name="AthumbRight"
+                 HorizontalAlignment="Left"
+                 Height="25"
+                 Margin="590,458,0,0"
+                 Stroke="Black"
+                 VerticalAlignment="Top"
+                 Width="25" />
+        <Ellipse Fill="Beige"
+                 x:Name="AindexRight"
+                 HorizontalAlignment="Left"
+                 Height="25"
+                 Margin="628,387,0,0"
+                 Stroke="Black"
+                 VerticalAlignment="Top"
+                 Width="25" />
+        <Ellipse Fill="Beige"
+                 x:Name="AmiddleRight"
+                 HorizontalAlignment="Left"
+                 Height="25"
+                 Margin="659,372,0,0"
+                 Stroke="Black"
+                 VerticalAlignment="Top"
+                 Width="25" />
+        <Ellipse Fill="Beige"
+                 x:Name="AringRight"
+                 HorizontalAlignment="Left"
+                 Height="25"
+                 Margin="690,391,0,0"
+                 Stroke="Black"
+                 VerticalAlignment="Top"
+                 Width="25" />
+        <Ellipse Fill="Beige"
+                 x:Name="ApinkieRight"
+                 HorizontalAlignment="Left"
+                 Height="25"
+                 Margin="718,425,0,0"
+                 Stroke="Black"
+                 VerticalAlignment="Top"
+                 Width="25" />
+        <Ellipse Fill="Yellow"
+                 x:Name="AthumbLeft"
+                 HorizontalAlignment="Left"
+                 Height="25"
+                 Margin="252,455,0,0"
+                 Stroke="Black"
+                 VerticalAlignment="Top"
+                 Width="26"
+                 RenderTransformOrigin="0.5,0.5">
+        </Ellipse>
+        <Ellipse Fill="Beige"
+                 x:Name="AindexLeft"
+                 HorizontalAlignment="Left"
+                 Height="25"
+                 Margin="211,377,0,0"
+                 Stroke="Black"
+                 VerticalAlignment="Top"
+                 Width="26"
+                 RenderTransformOrigin="0.5,0.5">
+        </Ellipse>
+        <Ellipse Fill="Beige"
+                 x:Name="AmiddleLeft"
+                 HorizontalAlignment="Left"
+                 Height="25"
+                 Margin="177,362,0,0"
+                 Stroke="Black"
+                 VerticalAlignment="Top"
+                 Width="25"
+                 RenderTransformOrigin="0.5,0.5">
+        </Ellipse>
+        <Ellipse Fill="Beige"
+                 x:Name="AringLeft"
+                 HorizontalAlignment="Left"
+                 Height="25"
+                 Margin="142,381,0,0"
+                 Stroke="Black"
+                 VerticalAlignment="Top"
+                 Width="25"
+                 RenderTransformOrigin="0.5,0.5">
+        </Ellipse>
+        <Ellipse Fill="Beige"
+                 x:Name="ApinkieLeft"
+                 HorizontalAlignment="Left"
+                 Height="25"
+                 Margin="112,416,0,0"
+                 Stroke="Black"
+                 VerticalAlignment="Top"
+                 Width="26"
+                 RenderTransformOrigin="0.5,0.5">
+        </Ellipse>
+        <Ellipse x:Name="StatusElipseRight_Copy"
+                 HorizontalAlignment="Center"
+                 Height="75"
+                 Stroke="Black"
+                 Fill="DimGray"
+                 VerticalAlignment="Center"
+                 Width="75"
+                 Margin="515,645,185,100"
+                 RenderTransformOrigin="0.5,-1.635" />
 
+        <Canvas x:Name="right_JoystickCanvas"
+                HorizontalAlignment="Left"
+                Height="105"
+                Margin="511,644,0,0"
+                VerticalAlignment="Top"
+                Width="110">
+            <Ellipse x:Name="JoyR"
+                     HorizontalAlignment="Center"
+                     Height="20"
+                     Stroke="Black"
+                     Fill="white"
+                     VerticalAlignment="Center"
+                     Width="20"
+                     Canvas.Top="43"
+                     Canvas.Left="44" />
+        </Canvas>
+    </Grid>
 </UserControl>

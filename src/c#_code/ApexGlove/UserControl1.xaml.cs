@@ -9,6 +9,8 @@ using System.Windows.Media.Media3D;
 using System.Windows.Media.Animation;
 using System.IO.Pipes;
 using System.IO;
+using System.Windows.Shapes;
+using System.Globalization;
 
 
 
@@ -17,7 +19,7 @@ namespace ApexGlove
     /// <summary>
     /// Logique d'interaction pour UserControl1.xaml
     /// </summary>
-    enum UI
+    enum UI     //give the x:Name of the progressBar on the UI
     {
         pinkieRight = 0,    //0
         ringRight = 1,      //1
@@ -32,13 +34,30 @@ namespace ApexGlove
         thumbYLeft = 10,
         thumbXLeft = 11   //11
     }
+
+    enum finger_contacts    //give the x:Name for the ellipse of the finger's aluminium contacts
+    {
+        AindexRight = 0,    //0
+        AmiddleRight = 1,      //1
+        AringRight = 2,    //2
+        ApinkieRight = 3,     //...
+
+        AthumbRight = 4,
+        ApinkieLeft = 5,     //6
+        AringLeft = 6,
+        AmiddleLeft = 7,
+        AindexLeft = 8,
+        AthumbLeft = 9,
+    }
+
+
     public partial class UserControl1 : UserControl
     {
         private SerialPort _serialPortL = new SerialPort();
         private SerialPort _serialPortR = new SerialPort();
         public String dataBuf;
-        int[] indexes = new int[12];     //index of the sensor value in the received serial buffer
-        string[] Sensordata = new string[12]; //actual value measuered by the sensor
+        int[] indexes = new int[25];     //index of the sensor value in the received serial buffer
+        string[] Sensordata = new string[25]; //actual value measuered by the sensor
         static readonly char[] indexAlph = new[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
                                                    'N' , 'O' , 'P' , 'Q' , 'R' , 'S', 'T', 'U', 'V', 'W', 'Y', 'Z' };//data indexes used by the arduino nano's serial code
 
@@ -50,17 +69,45 @@ namespace ApexGlove
         public bool RranOnce = false;
         public bool LranOnce = false;
 
-
+        public struct MPU6050
+        {
+            public int gyro_X;  //12    M
+            public int gyro_Y;  //13    N
+            public int gyro_Z; //Z axis DOES NOT work properly on MPU 6050s. It will be ignored for now
+            public int accel_X; //15    P
+            public int accel_Y; //16    Q
+            public int accel_Z; //17    R   also EOF (for glove V1.8)
+            //int temperature; //useless so unused
+            public MPU6050(int finalZ)
+            {
+                gyro_X = 0;
+                gyro_Y = 0;
+                gyro_Z = finalZ;
+                accel_X = 0;
+                accel_Y = 0;
+                accel_Z = 0;
+            }
+        }
 
         public struct Glove //data structure for a full Apex glove
         {
-            public int[] values;
+            public int[] values;//0-5 [A-F] is articulations 
+
+            public MPU6050 mpu;
+            public int joyX;// 6 [G]
+            public int joyY;// 7 [H]
+            public bool[] contacts;//8-11 [I-L] is aluminium pads
             public bool rightHand;
+            public bool joyBtn;
             public Glove(bool rightHand)
             {
-                this.values = new int[11] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-
+                values = new int[11] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };   //i keep extras for later implementation of Y axis for all fingers
+                contacts = new bool[] { false, false, false, false };
+                joyX = 0;
+                joyY = 0;
+                joyBtn = false;
                 this.rightHand = rightHand;
+                mpu = new MPU6050(0);
             }
         }
         public static int[,] setters = new int[,] { { 1023, 1023, 1023, 1023, 1023, 1023, 1023, 1023, 1023, 1023, 1023 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } }; //0- max 1- min; 0-5 left , 6-11 right
@@ -104,7 +151,7 @@ namespace ApexGlove
             try
             {
                 String Selected;
-                //Selected = comboBox_comPort.Items.CurrentItem.ToString();
+
                 Selected = (String)comboBox_comPort.SelectedItem;
                 if (Selected != null)
                 {
@@ -150,7 +197,7 @@ namespace ApexGlove
             try
             {
                 _serialPortL.Close();
-
+                _serialPortR.Close();
                 button_open.IsEnabled = true;
                 button_close.IsEnabled = false;
                 req_button.IsEnabled = false;
@@ -200,9 +247,9 @@ namespace ApexGlove
                 do
                 {
                     await Task.Delay(TTW);
-                    _serialPortL.Write("#");
-                    _serialPortR.Write("#");
+                    if (_serialPortL.IsOpen) _serialPortL.Write("#");
 
+                    if (_serialPortR.IsOpen) _serialPortR.Write("#");
                 } while (runTasks);
             }));
         }
@@ -214,6 +261,8 @@ namespace ApexGlove
 
             SerialPort SpIn = (SerialPort)sender;
             String serialDataIn = SpIn.ReadLine();
+            serialDataIn.Replace("−", "-");
+            serialDataIn.Replace(".", ",");
             Application.Current.Dispatcher.Invoke(new Action(() => { COMDATA.Text = serialDataIn; }));
             ProcessData(sender, e, serialDataIn);
 
@@ -223,51 +272,87 @@ namespace ApexGlove
         {
             try
             {
-                bool wrong = false;
+                bool wrong = false;     //hardware error handling without throwing an exception
+                int EndOfStream = 0;    //Index at which the index letters can no longer be found (last 
                 SerialPort SpIn = (SerialPort)sender;
 
-                for (int i = 0; i <= 11; i++)
+                foreach (char c in indexAlph)    // sets EndOfStream and finds the indexes in the string
                 {
+                    int i = c - 65; //contains the position of the char c inside of the array indexAlph 
                     char temp = indexAlph[i];
                     indexes[i] = serialDataIn.IndexOf(temp);
-                    if (indexes[i] == -1)
+                    if (indexes[i] == -1)    //if not found
                     {
-                        wrong = true; //will be discarded
+                        if (i < 16)
+                            wrong = true;
+                        EndOfStream = i;    //EndOfStream contains the last index containing correct data
                         break;
                     }
                 }
                 if (!wrong)
                 {
-                    for (int i = 1; i <= 11; i++)
+                    //this could be simplified by using  only LastIndexOf, and not locating the indexes beforehand. TO_FIX
+                    for (int i = 1; i < EndOfStream; i++)
                     {
-                        Sensordata[i - 1] = serialDataIn.Substring(indexes[i - 1] + 1, (indexes[i] - indexes[i - 1]) - 1);
+                        Sensordata[i - 1] = serialDataIn.Substring(indexes[i - 1] + 1, (indexes[i] - indexes[i - 1]) - 1);  //gets data between 2 indexes [ex : A|1234|B || being the data]
                     }
-                    Sensordata[10] = serialDataIn.Substring(indexes[10] + 1, (indexes[11] - indexes[10]) - 1);
+                    Sensordata[EndOfStream] = serialDataIn.Substring(serialDataIn.LastIndexOf(indexAlph[EndOfStream]) + 1);   //gets the very last bit of data (Z|1234 EOF)
 
                     //---------------------------------------------------------------Thread change (to UI thread)
                     Application.Current.Dispatcher.Invoke(new Action(() =>
                         {
-                            Glove glove = new Glove(SpIn.DtrEnable);
-                            for (int i = 0; i < 11; i++)
+                            bool truth = true;
+                            Glove glove = new Glove(SpIn.DtrEnable);    //remember, DtrEnable is used to define if it's the right or left hand, horrendous but it works.
+                            int[] values = new int[EndOfStream];
+                            /*NumberStyles style;
+                            CultureInfo culture;
+                            style = NumberStyles.AllowDecimalPoint;
+                            culture = CultureInfo.CreateSpecificCulture("fr-FR");*/
+                            bool nega = false;
+
+                            for (int i = 0; i < EndOfStream - 1; i++)
                             {
-                                glove.values[i] = Int32.Parse(Sensordata[i]);
+                                truth = Int32.TryParse(Sensordata[i], out values[i]);   //set it back to an int instead of char
+                                if (!truth)
+                                {
+                                    double temp = 0;
+                                    nega = (Sensordata[i].IndexOf("-") != -1) ? true : false;
+                                 //   if (nega) Sensordata[i].Remove(0,1);
+                                    truth = double.TryParse(Sensordata[i], NumberStyles.Number, CultureInfo.CreateSpecificCulture("en-US"), out temp);
+                                 //   if (nega) temp *= -1;
+                                    int rounded = Convert.ToInt32(temp);
+                                    values[i] = rounded;
+                                }
                             }
+
+                            for (int i = 0; i < 6; i++)
+                                glove.values[i] = values[i];
+
+                            glove.joyX = values[6];
+                            glove.joyY = values[7];
+
+                            for (int i = 8; i < 12; i++)
+                                glove.contacts[i - 8] = (values[i] == 1);
+
+                            glove.mpu.gyro_X = values[12];
+                            glove.mpu.gyro_Y = values[13];
+                            glove.mpu.gyro_Z = values[14];
+
+                            glove.mpu.accel_Y = values[15];
+                            glove.mpu.accel_Z = values[16];
 
                             if (glove.rightHand)
                             {
                                 if (RranOnce)
-                                    for (int i = 0; i < 5; i++)
-                                        for (int n = 1; n < 3; n++)
-                                            if (shortDetected(glove, oldR, i) || incorrectSmoothing(glove, oldR, i))
-                                                glove.values[i] = oldR[i, 0];
-                                            else
-                                                RranOnce = true;
+                                    for (int i = 0; i < 5; i++) // the 6 finger potentiometers
+                                        if (shortDetected(glove, oldR, i) || incorrectSmoothing(glove, oldR, i))    //check if the values make sense, or discard them
+                                            glove.values[i] = oldR[i, 0];
+                                        else
+                                            RranOnce = true;
 
                                 for (int i = 0; i < 5; i++)
                                 {
-                                    glove.values[i] -= setters[1, i];
-                                    /*    if (maxes[i, 1] < glove.values[i]) glove.values[i] = maxes[1, i];
-                                        if (mins[i, 1] > glove.values[i]) glove.values[i] = mins[1, i];*/
+                                    glove.values[i] -= setters[1, i];   //susbtracts minimums
                                 }
 
                                 //Saves finger values to the UI
@@ -277,13 +362,26 @@ namespace ApexGlove
                                 }
 
                                 //Save gyro/accelerometer values to the UI
-                                int tempX = (glove.values[7] / 400) + 30;//y axis
+                                int tempX = ((glove.mpu.gyro_X/2)*-1) + 30;//y axis
                                 targetR.SetValue(Canvas.LeftProperty, (double)tempX);
-                                int tempY = (glove.values[6] / 400) + 40;//x axis
+                                int tempY = (glove.mpu.gyro_Y/2*-1) + 40;//x axis
                                 targetR.SetValue(Canvas.TopProperty, (double)tempY);
-                                int tempZ = (glove.values[8] / 400) + 30;//z axis
+                                int tempZ = -(glove.mpu.gyro_Z+180);
+                                arrowRdir.Angle = (double)tempZ;
 
-                                //rotate(true, tempX, tempY, tempZ);
+
+                                JoyR.SetValue(Canvas.LeftProperty, (double)((glove.joyY / 50) + 30));
+                                JoyR.SetValue(Canvas.TopProperty, (double)((glove.joyX / 50) + 30));
+
+                                for (int i = 0; i < 4; i++)
+                                {
+                                    String str = "Beige";
+                                    if (glove.contacts[i])
+                                        str = "Yellow";
+                                    Color color = (Color)ColorConverter.ConvertFromString(str);
+                                    SolidColorBrush brush = new SolidColorBrush(color);
+                                    ((Ellipse)this.FindName(((finger_contacts)i).ToString())).Fill = brush;
+                                }
 
                                 for (int i = 0; i < 6; i++)
                                 {
@@ -293,24 +391,27 @@ namespace ApexGlove
                                     }
                                     oldR[i, 0] = glove.values[i];
                                 }
+
+                               /* controller.mouseController.SetCursorPos(tempX*15, tempY*15);
+                                if (glove.contacts[0])
+                                {
+                                   //controller.mouseController.sendMouseRightclick((int)tempX*15,(int)tempY*15);
+                                }*/
                             }
                             else
                             {
                                 if (LranOnce)
                                     for (int i = 0; i < 5; i++)
-                                        for (int n = 1; n < 3; n++)
-                                            if (shortDetected(glove, oldL, i) || incorrectSmoothing(glove, oldL, i))
-                                            {
-                                                glove.values[i] = oldL[i, 0];
-                                            }
-                                            else
-                                                RranOnce = true;
+                                        if (shortDetected(glove, oldL, i) || incorrectSmoothing(glove, oldL, i))
+                                        {
+                                            glove.values[i] = oldL[i, 0];
+                                        }
+                                        else
+                                            RranOnce = true;
 
                                 for (int i = 6; i < 10; i++)
                                 {
                                     glove.values[i] -= setters[1, i];
-                                    /* if (maxes[i, 0] < glove.values[i]) glove.values[i] = maxes[i, 0];
-                                     if (mins[i, 0] > glove.values[i]) glove.values[i] = mins[i, 0];*/
                                 }
                                 //Saves finger values to the UI
                                 for (var z = 0; z < 6; z++)
@@ -319,16 +420,15 @@ namespace ApexGlove
                                 }
 
                                 //Save gyro/accelerometer values to the UI
-                                int tempY = (glove.values[6] / 400);//x axis
+                                int tempX = (glove.mpu.gyro_Y / 400) + 30;//y axis
+                                int tempY = (glove.mpu.gyro_X / 400) + 40;//x axis
                                 Yb.Text = tempY.ToString();
-                                targetL.SetValue(Canvas.TopProperty, (double)tempY);
-                                int tempX = (glove.values[7] / 400);//y axis
                                 Xb.Text = tempX.ToString();
                                 targetL.SetValue(Canvas.LeftProperty, (double)tempX);
+                                targetL.SetValue(Canvas.TopProperty, (double)tempY);
                                 int tempZ = (glove.values[8] / 400);//z axis
                                 Zb.Text = tempZ.ToString();
 
-                                //rotate(false, tempX, tempY, tempZ);
 
                                 for (int i = 0; i < 6; i++)
                                 {
@@ -352,10 +452,15 @@ namespace ApexGlove
             }
 
 
-            catch (System.FormatException)
-            {
-                Application.Current.Dispatcher.Invoke(new Action(() => { COMID.Text = "Arduino crashed"; }));
-            }
+            /*     catch (System.FormatException)
+                 {
+                     Application.Current.Dispatcher.Invoke(new Action(() => { COMID.Text = "Arduino crashed"; }));
+                 }*/
+
+            finally
+                {
+
+                }
 
         }
 
