@@ -1,0 +1,12 @@
+Y:\cs\ApexGloves\src\c#_code\ApexLogic\bin\Debug\net5.0\ApexLogic.deps.json
+Y:\cs\ApexGloves\src\c#_code\ApexLogic\bin\Debug\net5.0\ApexLogic.dll
+Y:\cs\ApexGloves\src\c#_code\ApexLogic\bin\Debug\net5.0\ref\ApexLogic.dll
+Y:\cs\ApexGloves\src\c#_code\ApexLogic\bin\Debug\net5.0\ApexLogic.pdb
+Y:\cs\ApexGloves\src\c#_code\ApexLogic\obj\Debug\net5.0\ApexLogic.csprojAssemblyReference.cache
+Y:\cs\ApexGloves\src\c#_code\ApexLogic\obj\Debug\net5.0\ApexLogic.GeneratedMSBuildEditorConfig.editorconfig
+Y:\cs\ApexGloves\src\c#_code\ApexLogic\obj\Debug\net5.0\ApexLogic.AssemblyInfoInputs.cache
+Y:\cs\ApexGloves\src\c#_code\ApexLogic\obj\Debug\net5.0\ApexLogic.AssemblyInfo.cs
+Y:\cs\ApexGloves\src\c#_code\ApexLogic\obj\Debug\net5.0\ApexLogic.csproj.CoreCompileInputs.cache
+Y:\cs\ApexGloves\src\c#_code\ApexLogic\obj\Debug\net5.0\ApexLogic.dll
+Y:\cs\ApexGloves\src\c#_code\ApexLogic\obj\Debug\net5.0\ref\ApexLogic.dll
+Y:\cs\ApexGloves\src\c#_code\ApexLogic\obj\Debug\net5.0\ApexLogic.pdb
