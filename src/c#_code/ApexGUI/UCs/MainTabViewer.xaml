@@ -11,18 +11,19 @@
         <Menu Margin="0,0,0,300">
             <MenuItem Header="_File" />
         </Menu>
-        <TabControl Margin="0,25,0,0">
+        <TabControl Margin="0,25,0,0"
+                    x:Name="Tabber">
             <TabItem Header="Connections">
                 <Grid Background="#FFE5E5E5">
-                    <local:Connections />
+                    <local:Connections x:Name="ConnectionTab" />
                 </Grid>
             </TabItem>
             <TabItem Header="Delimitor Definitions">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="41*" />
-                        <ColumnDefinition Width="356*" />
+                        <ColumnDefinition />
                     </Grid.ColumnDefinitions>
+                    <local:Delimitors x:Name="MyDelimitors"/>
                 </Grid>
             </TabItem>
             <TabItem Header="View Input Data">

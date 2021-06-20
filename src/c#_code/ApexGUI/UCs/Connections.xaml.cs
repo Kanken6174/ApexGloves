@@ -22,6 +22,7 @@ namespace ApexGUI.UCs
     /// </summary>
     public partial class Connections : UserControl
     {
+        public MainTabViewer MyParent;
         Master Master => (App.Current as App).Master;
         public Connections()
         {
@@ -57,7 +58,7 @@ namespace ApexGUI.UCs
             if (foundR)
             {
                 CBOX_RIGHTCOM.BorderBrush = Brushes.Green;
-                CBOX_RIGHTCOM.SelectedIndex = 2;
+                CBOX_RIGHTCOM.SelectedIndex = 1;
             }
             else
                 CBOX_RIGHTCOM.BorderBrush = Brushes.Transparent;
@@ -68,6 +69,40 @@ namespace ApexGUI.UCs
 
             BCR.IsEnabled = foundR;
             BCL.IsEnabled = foundL;
+            BCALL.IsEnabled = (foundL || foundR);
+        }
+
+        private void BCR_Click(object sender, RoutedEventArgs e)
+        {
+            if (CBOX_RIGHTCOM.SelectedItem != null || CBOX_RIGHTCOM.SelectedItem.ToString() != "None")
+                Master.ToConnectR = CBOX_RIGHTCOM.SelectedItem.ToString();
+            else
+                Master.ToConnectR = null;
+
+            ToDelimitors();
+        }
+
+        private void BCL_Click(object sender, RoutedEventArgs e)
+        {
+            if (CBOX_LEFTCOM.SelectedItem != null || CBOX_LEFTCOM.SelectedItem.ToString() != "None")
+                Master.ToConnectL = CBOX_LEFTCOM.SelectedItem.ToString();
+            else
+                Master.ToConnectL = null;
+
+            ToDelimitors();
+        }
+
+        private void BCALL_Click(object sender, RoutedEventArgs e)
+        {
+            BCR_Click(sender, e);
+            BCL_Click(sender, e);
+            ToDelimitors();
+        }
+
+        private void ToDelimitors()
+        {
+            if(MyParent is not null)
+                MyParent.Tabber.SelectedIndex = 1;
         }
     }
 }

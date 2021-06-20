@@ -38,3 +38,5 @@ Y:\cs\ApexGloves\src\c#_code\ApexGUI\bin\Debug\net5.0-windows\runtimes\osx\lib\n
 Y:\cs\ApexGloves\src\c#_code\ApexGUI\bin\Debug\net5.0-windows\runtimes\win\lib\netstandard2.0\System.IO.Ports.dll
 Y:\cs\ApexGloves\src\c#_code\ApexGUI\obj\Debug\net5.0-windows\UCs\Connections.g.cs
 Y:\cs\ApexGloves\src\c#_code\ApexGUI\obj\Debug\net5.0-windows\UCs\Connections.baml
+Y:\cs\ApexGloves\src\c#_code\ApexGUI\obj\Debug\net5.0-windows\UCs\Delimitors.g.cs
+Y:\cs\ApexGloves\src\c#_code\ApexGUI\obj\Debug\net5.0-windows\UCs\Delimitors.baml

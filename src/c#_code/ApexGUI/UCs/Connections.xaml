@@ -26,7 +26,7 @@
                    Width="300"
                    Fill="Gray"
                    Panel.ZIndex="-1" />
-        <Button Content="Connect all availible"
+        <Button Content="Connect all available"
                 HorizontalAlignment="Left"
                 Margin="30,85,0,0"
                 VerticalAlignment="Top" 
@@ -43,7 +43,8 @@
                 Margin="235,85,0,0"
                 VerticalAlignment="Top"
                 IsEnabled="False"
-                x:Name="BCR"/>
+                x:Name="BCR"
+                Click="BCR_Click"/>
 
     </Grid>
 </UserControl>

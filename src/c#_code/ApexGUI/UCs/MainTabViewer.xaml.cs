@@ -23,6 +23,7 @@ namespace ApexGUI.UCs
         public MainTabViewer()
         {
             InitializeComponent();
+            ConnectionTab.MyParent = this;
         }
     }
 }
