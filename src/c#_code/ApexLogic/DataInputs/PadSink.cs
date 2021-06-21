@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ApexLogic.DataInputs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace ApexLogic.DataFormats
 {
-    class Gyroscope : InputData
+    public class PadSink : Pad
     {
-        public override void Update()
-        {
-        }
+        public PadSource ContactWith;
     }
 }

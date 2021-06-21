@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace ApexLogic.DataFormats
 {
-    public interface IInputData
+    public abstract class InputData
     {
-        public void Process();
+        public static string RawIn;
+        public abstract void Update();
     }
 }

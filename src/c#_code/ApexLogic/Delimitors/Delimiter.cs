@@ -13,9 +13,9 @@ namespace ApexLogic.Delimiters
         public char Indexer;//Letter or symbol bound to the delimiter
         public string Description;//User-added description
         private string StrValue;
-        public int Value;
+        public int InputValue;
         private List<int> ValuesOverTime;
-        IInputData MySource;
+        InputData MySource;
 
         public Delimiter(char Indexer)
         {
@@ -33,11 +33,11 @@ namespace ApexLogic.Delimiters
             if (i > 0)
             {
                 StrValue = Data.Substring(0, i - 1);
-                int.TryParse(StrValue, out Value);
+                int.TryParse(StrValue, out InputValue);
             }
 
             Data = Data.Substring(i, Data.Length - i);
-            MySource.Process();
+            MySource.Update();
 
             return Data;
         }

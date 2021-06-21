@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ApexLogic.Anatomics.DoubleJoint" Collapsed="true">
+    <Position X="7.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAAAACAQgAAAAAAAAAAA=</HashCode>
+      <FileName>Anatomics\DoubleJoint.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ApexLogic.Anatomics.Finger" Collapsed="true">
+    <Position X="18.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAgAAAAAAAAAAAAAAAAAABAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Anatomics\Finger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ApexLogic.Anatomics.Hand" Collapsed="true">
+    <Position X="20.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAABA=</HashCode>
+      <FileName>Anatomics\Hand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ApexLogic.Anatomics.Joint" Collapsed="true">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EABAACAABAAAAAAAAAkEAAAEAAAAAAAAAAEAAQAAAAA=</HashCode>
+      <FileName>Anatomics\Joint.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ApexLogic.COMMasters.COMConnectAndTalk" Collapsed="true">
+    <Position X="18.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>COMMasters\COMConnectAndTalk.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ApexLogic.COMMasters.COMFinder" Collapsed="true">
+    <Position X="20.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>COMMasters\COMFinder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ApexLogic.DataFormats.Accelerometer" Collapsed="true">
+    <Position X="7.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4AYAE=</HashCode>
+      <FileName>DataInputs\Accelerometer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ApexLogic.DataFormats.Gyroscope" Collapsed="true">
+    <Position X="9.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataInputs\Gyroscope.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ApexLogic.DataFormats.InputData" Collapsed="true">
+    <Position X="10.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>DataInputs\InputData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ApexLogic.DataFormats.Magnetometer" Collapsed="true">
+    <Position X="16.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataInputs\Magnetometer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ApexLogic.DataFormats.PadSink" Collapsed="true">
+    <Position X="15.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>DataInputs\PadSink.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ApexLogic.DataFormats.PadSource" Collapsed="true">
+    <Position X="12.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAEAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataInputs\PadSource.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ApexLogic.DataInputs.JointInput" Collapsed="true">
+    <Position X="11.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAACAAAAAAAAAAAABAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>DataInputs\JointInput.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ApexLogic.DataInputs.Pad" Collapsed="true">
+    <Position X="14" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAABAAAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataInputs\Pad.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ApexLogic.Delimiters.Delimiter" Collapsed="true">
+    <Position X="22.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAgAAAAAACAAAAAEAABAAAABAAgAAAAAAA=</HashCode>
+      <FileName>Delimitors\Delimiter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ApexLogic.Positionning.Point3d" Collapsed="true">
+    <Position X="18.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAgAAAAABAAwBgAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Positionning\Point3d.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ApexLogic.Master" Collapsed="true">
+    <Position X="22.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAQAAQAAAAAAAAABAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Master.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ApexLogic.Settings" Collapsed="true">
+    <Position X="20.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAAAAEAAAAAAAAAAAAAAAIABAAAA=</HashCode>
+      <FileName>Settings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

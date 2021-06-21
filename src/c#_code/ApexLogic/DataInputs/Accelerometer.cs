@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace ApexLogic.DataFormats
 {
-    class Accelerometer : IInputData
+    class Accelerometer : InputData
     {
+        public int RawX, RawY, RawZ;
+        public double X, Y, Z;
+
+        public override void Update()
+        {
+        }
     }
 }

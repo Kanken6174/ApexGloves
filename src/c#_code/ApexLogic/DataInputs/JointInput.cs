@@ -8,18 +8,18 @@ using System.Threading.Tasks;
 
 namespace ApexLogic.DataInputs
 {
-    public class JointInput : IInputData
+    public class JointInput : InputData
     {
         string Raw;
         float Angle;
         Finger Managed;
 
-        public void Process()
+        public override void Update()
         {
             float.TryParse(Raw, out Angle);
-            foreach(Joint j in Managed.FingerJoints)
+            foreach (KeyValuePair<int, Joint> j in Managed.FingerJoints)
             {
-                j.setAngle(Angle);
+                j.Value.setAngle(Angle);
             }
         }
     }

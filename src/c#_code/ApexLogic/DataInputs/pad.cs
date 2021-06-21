@@ -1,15 +1,19 @@
-﻿using System;
+﻿using ApexLogic.DataFormats;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApexLogic.DataFormats
+namespace ApexLogic.DataInputs
 {
-    class pad : IInputData
+    public class Pad : InputData
     {
+        public float position;
         public bool IsInContact;
-        public pad ContactWith;
-        public int position;
+
+        public override void Update()
+        {
+        }
     }
 }

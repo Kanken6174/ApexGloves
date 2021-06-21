@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ApexLogic.COMMasters;
+using ApexLogic;
 
 namespace ApexGUI.UCs
 {
@@ -23,6 +24,7 @@ namespace ApexGUI.UCs
     public partial class Delimitors : UserControl
     {
         public SortedList<int,Button> MyButtons = new();
+        Master Master => (App.Current as App).Master;
         string CurrentSnap = "";
         public Delimitors()
         {
@@ -32,7 +34,7 @@ namespace ApexGUI.UCs
         public void ReadFromGloveAndSetupDelimitors()
         {
             string strBump = "";
-            CurrentSnap = COMConnectAndTalk.ConnectAndReadOnceFrom("COM11");
+            CurrentSnap = COMConnectAndTalk.ConnectAndReadOnceFrom(Master.ToConnectR);
             Wrappy.Children.Clear();
             int i = 0;
             foreach (char c in CurrentSnap)

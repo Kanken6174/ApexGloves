@@ -9,17 +9,28 @@ using ApexLogic.Positionning;
 
 namespace ApexLogic.Anatomics
 {
-    class Hand
+    public class Hand
     {
         public char HandType;
         public Point3d HandPos;
-        List<IInputData> Inputs;
-        List<Finger> Fingers;
+        Dictionary<int,Finger> Fingers;
+        public Dictionary<int, InputData> MyInputs;
 
-        public Hand(char HandType)
+        public Hand(char HandType, int fingers = 5)
         {
             this.HandType = HandType;
             HandPos.Reset();
+
+            for (int i = fingers; i > 0; i--)
+            {
+                Finger f = new(i);
+                Fingers.Add(i, f);
+            }
+        }
+
+        public void Update()
+        {
+
         }
     }
 }
