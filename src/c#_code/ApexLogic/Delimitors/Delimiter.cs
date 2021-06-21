@@ -12,17 +12,22 @@ namespace ApexLogic.Delimiters
     {
         public char Indexer;//Letter or symbol bound to the delimiter
         public string Description;//User-added description
-        private string StrValue;
-        public int InputValue;
-        private List<int> ValuesOverTime;
-        InputData MySource;
+        private string StrValue; //Value read as string.
+        public int InputValue;  //Value read as int (0-1023) for arduino
+        private List<int> ValuesOverTime;   //Values over time, used for error correction.
+        InputData MySource; //Source type. Would usually be a potentiometer or Pad.
 
         public Delimiter(char Indexer)
         {
             this.Indexer = Indexer;
         }
-
-        public string ChainOfCommand(string Data)
+        
+        /// <summary>
+        /// Processes data for this delimiter, and returning the unused data for the rest of the delimitier chain
+        /// </summary>
+        /// <param name="Data">Data gotten from the previous chain node, or the parent Updat function</param>
+        /// <returns>Unused data for the rest of the chain</returns>
+        public string ChainedProcessing(string Data)
         {
             int i = 0;
             for(i = 0; i < Data.Length; i++)

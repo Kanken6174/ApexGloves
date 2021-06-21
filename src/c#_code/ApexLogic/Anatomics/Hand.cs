@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ApexLogic.DataFormats;
 using ApexLogic.Positionning;
+using ApexLogic.Delimiters;
 
 namespace ApexLogic.Anatomics
 {
@@ -15,6 +16,7 @@ namespace ApexLogic.Anatomics
         public Point3d HandPos;
         Dictionary<int,Finger> Fingers;
         public Dictionary<int, InputData> MyInputs;
+        public List<Delimiter> MyDelimiters;
 
         public Hand(char HandType, int fingers = 5)
         {
@@ -28,9 +30,12 @@ namespace ApexLogic.Anatomics
             }
         }
 
-        public void Update()
+        public void Update(string RawIn)
         {
-
+            foreach(Delimiter Del in MyDelimiters)
+            {
+                RawIn = Del.ChainedProcessing(RawIn);
+            }
         }
     }
 }

@@ -43,5 +43,34 @@ namespace ApexLogic.COMMasters
             }
 
         }
+    public static SerialPort OpenSerialPort(string ComPort)
+        {
+            if (!ComPort.Contains("COM"))
+                return null;
+            SerialPort sp = new();
+            sp.PortName = ComPort;
+            sp.ReadTimeout = 50;
+            sp.WriteTimeout = 50;
+            sp.BaudRate = 38400;
+            try
+            {
+                sp.Open();
+            }
+            catch (IOException)
+            {
+                if (sp.IsOpen)
+                    sp.Close();
+                return null;
+            }
+            catch (TimeoutException)
+            {
+                if (sp.IsOpen)
+                    sp.Close();
+                return null;
+            }
+            return sp;
+        }
+
+        
     }
 }

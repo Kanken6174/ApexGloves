@@ -11,9 +11,7 @@ namespace ApexLogic
         public List<string> ValidPorts = COMFinder.AutodetectArduinoPort().Result;
         public string ToConnectR = "";
         public string ToConnectL = "";
-        public Dictionary<char, Delimiter> MyDelimitors = new();
-        public Hand RightHand = new Hand('R');
-        public Hand LeftHand = new Hand('L');
+        public Hand Hands = new Hand('R');
 
         public Master()
         {
