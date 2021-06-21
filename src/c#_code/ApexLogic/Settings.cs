@@ -12,6 +12,7 @@ namespace ApexLogic
         public static float DefaultMinAngleRaw = 0;
         public static float DefaultMinAngleX = -10;
         public static float DefaultMaxAngleX = 90;
-        
+
+        public static int TimeToWait = 50;// in ms
     }
 }

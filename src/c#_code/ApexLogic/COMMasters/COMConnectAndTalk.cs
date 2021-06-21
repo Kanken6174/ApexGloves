@@ -70,7 +70,5 @@ namespace ApexLogic.COMMasters
             }
             return sp;
         }
-
-        
     }
 }

@@ -69,7 +69,7 @@ namespace ApexGUI.UCs {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/ApexGUI;component/ucs/delimitors.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/ApexGUI;V1.0.0.0;component/ucs/delimitors.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\UCs\Delimitors.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

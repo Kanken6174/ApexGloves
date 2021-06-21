@@ -7,18 +7,19 @@ using System.Threading.Tasks;
 using ApexLogic.DataFormats;
 using ApexLogic.Positionning;
 using ApexLogic.Delimiters;
+using System.IO.Ports;
 
 namespace ApexLogic.Anatomics
 {
     public class Hand
     {
         public char HandType;
-        public Point3d HandPos;
-        Dictionary<int,Finger> Fingers;
-        public Dictionary<int, InputData> MyInputs;
-        public List<Delimiter> MyDelimiters;
-
-        public Hand(char HandType, int fingers = 5)
+        public Point3d HandPos = new();
+        Dictionary<int,Finger> Fingers = new();
+        public Dictionary<int, InputData> MyInputs = new();
+        public List<Delimiter> MyDelimiters = new();
+        public SerialPort Port;
+        public Hand(char HandType, SerialPort Port = null, int fingers = 5)
         {
             this.HandType = HandType;
             HandPos.Reset();
@@ -30,8 +31,9 @@ namespace ApexLogic.Anatomics
             }
         }
 
-        public void Update(string RawIn)
+        public void Update()
         {
+            String RawIn = new("");
             foreach(Delimiter Del in MyDelimiters)
             {
                 RawIn = Del.ChainedProcessing(RawIn);
