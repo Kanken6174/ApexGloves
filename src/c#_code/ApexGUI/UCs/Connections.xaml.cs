@@ -34,7 +34,6 @@ namespace ApexGUI.UCs
         {
             bool foundR = false;
             bool foundL = false;
-            Master.RefreshPorts();
             CBOX_RIGHTCOM.Items.Clear();
             CBOX_RIGHTCOM.Items.Add("None");
             CBOX_LEFTCOM.Items.Clear();

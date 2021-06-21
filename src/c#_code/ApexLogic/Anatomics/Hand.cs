@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using ApexLogic.DataFormats;
 using ApexLogic.Positionning;
 using ApexLogic.Delimiters;
+using ApexLogic.COMMasters;
 using System.IO.Ports;
 
 namespace ApexLogic.Anatomics
@@ -19,8 +20,12 @@ namespace ApexLogic.Anatomics
         public Dictionary<int, InputData> MyInputs = new();
         public List<Delimiter> MyDelimiters = new();
         public SerialPort Port;
+        public string RawIn = "";
         public Hand(char HandType, SerialPort Port = null, int fingers = 5)
-        {
+        {   
+            if(Port is not null)
+                Port.DataReceived += Port_DataReceived;
+
             this.HandType = HandType;
             HandPos.Reset();
 
@@ -31,9 +36,14 @@ namespace ApexLogic.Anatomics
             }
         }
 
-        public void Update()
+        private void Port_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            String RawIn = new("");
+            RawIn = COMReader.ReadData(Port);
+            Update();
+        }
+
+        private void Update()
+        {
             foreach(Delimiter Del in MyDelimiters)
             {
                 RawIn = Del.ChainedProcessing(RawIn);

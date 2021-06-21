@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ApexLogic.DataFormats
 {
-    class Gyroscope : InputData
+    public class Gyroscope : InputData
     {
-        public override void Update()
+        public new void Update()
         {
         }
     }

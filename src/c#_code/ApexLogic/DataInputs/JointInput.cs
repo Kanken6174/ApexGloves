@@ -10,13 +10,12 @@ namespace ApexLogic.DataInputs
 {
     public class JointInput : InputData
     {
-        string Raw;
         float Angle;
         Finger Managed;
 
-        public override void Update()
+        public new void Update()
         {
-            float.TryParse(Raw, out Angle);
+            float.TryParse(RawIn, out Angle);
             foreach (KeyValuePair<int, Joint> j in Managed.FingerJoints)
             {
                 j.Value.setAngle(Angle);

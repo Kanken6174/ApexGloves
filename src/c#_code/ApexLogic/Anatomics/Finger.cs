@@ -9,9 +9,9 @@ namespace ApexLogic.Anatomics
 {
     class Finger
     {
-        public Dictionary<int,Joint> FingerJoints; //joints of the finger
+        public Dictionary<int,Joint> FingerJoints = new(); //joints of the finger
         public int Index; //position in the hand, 0 is towards torso (thumb if you're a human), ++ is towards exterior (pinkie)
-        public Dictionary<int, InputData> MyInputs;
+        public Dictionary<int, InputData> MyInputs = new();
         public Finger(int Index, int Joints = 3)
         {
             for(int i = Joints; i > 0; i--)

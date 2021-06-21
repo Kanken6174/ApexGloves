@@ -15,6 +15,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ApexLogic.COMMasters;
 using ApexLogic;
+using ApexLogic.Utilities;
+using ApexLogic.DataFormats;
 
 namespace ApexGUI.UCs
 {
@@ -24,11 +26,17 @@ namespace ApexGUI.UCs
     public partial class Delimitors : UserControl
     {
         public SortedList<int,Button> MyButtons = new();
+        List<InputData> InheritedTypes = ReflectiveEnumerator.GetEnumerableOfType<InputData>().ToList();    //This method is a blessing.
         Master Master => (App.Current as App).Master;
         string CurrentSnap = "";
+        public List<string> InputTypes = new();
         public Delimitors()
         {
             InitializeComponent();
+            foreach(InputData ID in InheritedTypes)
+            {
+                Inputs.Items.Add(ID.GetType().Name);
+            }
         }
 
         public void ReadFromGloveAndSetupDelimitors()
@@ -37,32 +45,41 @@ namespace ApexGUI.UCs
             CurrentSnap = COMConnectAndTalk.ConnectAndReadOnceFrom(Master.ToConnectR);
             Wrappy.Children.Clear();
             int i = 0;
-            foreach (char c in CurrentSnap)
+            MyButtons.Clear();
+            if (CurrentSnap is not null)
             {
-                if (char.IsLetter(c))
+                foreach (char c in CurrentSnap)
                 {
-                    if (strBump != "" && i!= 0)
+                    if (char.IsLetter(c))
                     {
-                        Button btnBump = new();
-                        btnBump.Content = strBump;
-                        btnBump.Tag = (i - strBump.Length) + 1;
-                        btnBump.IsEnabled = false;
-                        Wrappy.Children.Add(btnBump);
-                        strBump = "";
+                        if (strBump != "" && i != 0)
+                        {
+                            Button btnBump = new();
+                            btnBump.Content = strBump;
+                            btnBump.Tag = (i - strBump.Length) + 1;
+                            btnBump.IsEnabled = false;
+                            Wrappy.Children.Add(btnBump);
+                            strBump = "";
+                        }
+                        Button btn = new();
+                        btn.Content = c;
+                        btn.Click += BCR_Click;
+                        btn.Tag = i;
+                        Wrappy.Children.Add(btn);
+                        MyButtons.Add(i, btn);
                     }
-                    Button btn = new();
-                    btn.Content = c;
-                    btn.Click += BCR_Click;
-                    btn.Tag = i;
-                    Wrappy.Children.Add(btn);
-                    MyButtons.Add(i, btn);
+                    else
+                    {
+                        if (c != ' ')
+                            strBump += c;
+                    }
+                    i++;
                 }
-                else
-                {
-                    if(c != ' ')
-                        strBump += c;
-                }
-                i++;
+                Button bt = new();
+                bt.Content = strBump;
+                bt.Tag = (i - strBump.Length) + 1;
+                bt.IsEnabled = false;
+                Wrappy.Children.Add(bt);
             }
         }
 

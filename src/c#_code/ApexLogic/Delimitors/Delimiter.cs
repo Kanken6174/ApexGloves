@@ -42,6 +42,7 @@ namespace ApexLogic.Delimiters
             }
 
             Data = Data.Substring(i, Data.Length - i);
+            MySource.RawIn = StrValue;
             MySource.Update();
 
             return Data;

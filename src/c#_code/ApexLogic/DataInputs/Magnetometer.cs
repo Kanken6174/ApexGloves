@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ApexLogic.DataFormats
 {
-    class Magnetometer : InputData
+    public class Magnetometer : InputData
     {
-        public override void Update()
+        public new void Update()
         {
         }
     }

@@ -77,7 +77,7 @@ namespace ApexGUI.UCs {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/ApexGUI;V1.0.0.0;component/ucs/maintabviewer.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/ApexGUI;component/ucs/maintabviewer.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\UCs\MainTabViewer.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

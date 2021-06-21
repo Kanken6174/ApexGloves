@@ -10,6 +10,9 @@
     <Compile Update="UCs\Connections.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="UCs\DelimitorModels\JointInput.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="UCs\Delimitors.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -22,6 +25,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UCs\Connections.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UCs\DelimitorModels\JointInput.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UCs\Delimitors.xaml">

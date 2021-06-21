@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
 Y:\cs\ApexGloves\src\c#_code\ApexGUI\App.xaml
-4-752806240
+51949937351
 
-6-1478317237
+7-1346526782
 196759291597
-MainWindow.xaml;UCs\Connections.xaml;UCs\Delimitors.xaml;UCs\MainTabViewer.xaml;
+MainWindow.xaml;UCs\Connections.xaml;UCs\DelimitorModels\JointInput.xaml;UCs\Delimitors.xaml;UCs\MainTabViewer.xaml;
 
 False
 

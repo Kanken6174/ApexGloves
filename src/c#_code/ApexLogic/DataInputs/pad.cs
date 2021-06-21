@@ -12,7 +12,7 @@ namespace ApexLogic.DataInputs
         public float position;
         public bool IsInContact;
 
-        public override void Update()
+        public new void Update()
         {
         }
     }

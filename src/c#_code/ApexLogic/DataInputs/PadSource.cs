@@ -12,7 +12,7 @@ namespace ApexLogic.DataFormats
         public List<PadSink> InContact;
         public List<PadSink> CanContact;
 
-        public override void Update()
+        public new void Update()
         { 
         }
     }

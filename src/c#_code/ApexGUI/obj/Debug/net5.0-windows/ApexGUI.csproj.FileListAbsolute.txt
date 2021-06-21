@@ -40,3 +40,5 @@ Y:\cs\ApexGloves\src\c#_code\ApexGUI\obj\Debug\net5.0-windows\UCs\Connections.g.
 Y:\cs\ApexGloves\src\c#_code\ApexGUI\obj\Debug\net5.0-windows\UCs\Connections.baml
 Y:\cs\ApexGloves\src\c#_code\ApexGUI\obj\Debug\net5.0-windows\UCs\Delimitors.g.cs
 Y:\cs\ApexGloves\src\c#_code\ApexGUI\obj\Debug\net5.0-windows\UCs\Delimitors.baml
+Y:\cs\ApexGloves\src\c#_code\ApexGUI\obj\Debug\net5.0-windows\UCs\DelimitorModels\JointInput.g.cs
+Y:\cs\ApexGloves\src\c#_code\ApexGUI\obj\Debug\net5.0-windows\UCs\DelimitorModels\JointInput.baml

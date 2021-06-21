@@ -1,5 +1,6 @@
 ﻿using ApexLogic.Anatomics;
 using ApexLogic.COMMasters;
+using ApexLogic.DataFormats;
 using ApexLogic.Delimiters;
 using System;
 using System.Collections.Generic;
@@ -14,8 +15,8 @@ namespace ApexLogic
         public string toConnectL = "";
         public SerialPort RPort = new();
         public SerialPort LPort = new();
-        public Hand RightHand = new('R', null);
-        public Hand LefttHand = new('R', null);
+        public Hand RightHand;
+        public Hand LefttHand;
         private COMTasks RT = new();
         private COMTasks LT = new();
 
@@ -42,8 +43,8 @@ namespace ApexLogic
 
         public Master()
         {
-            RightHand.Port = RPort;
-            LefttHand.Port = LPort;
+            RightHand = new('R', RPort);
+            LefttHand = new('L', LPort);
             RT._serialPort = RPort;
             LT._serialPort = LPort;
         }
