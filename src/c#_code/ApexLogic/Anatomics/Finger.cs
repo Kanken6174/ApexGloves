@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ApexLogic.Anatomics
 {
-    class Finger
+    public class Finger
     {
         public Dictionary<int,Joint> FingerJoints = new(); //joints of the finger
         public int Index; //position in the hand, 0 is towards torso (thumb if you're a human), ++ is towards exterior (pinkie)

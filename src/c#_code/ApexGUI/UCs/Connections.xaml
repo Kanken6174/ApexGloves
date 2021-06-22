@@ -10,7 +10,7 @@
     <Grid>
         <ComboBox x:Name="CBOX_LEFTCOM"
                   HorizontalAlignment="Left"
-                  Margin="30,45,0,0"
+                  Margin="23,45,0,0"
                   VerticalAlignment="Top"
                   Width="120" />
         <ComboBox x:Name="CBOX_RIGHTCOM"
@@ -29,22 +29,30 @@
         <Button Content="Connect all available"
                 HorizontalAlignment="Left"
                 Margin="30,85,0,0"
-                VerticalAlignment="Top" 
+                VerticalAlignment="Top"
                 IsEnabled="False"
-                x:Name="BCALL"/>
+                x:Name="BCALL" />
         <Button Content="Connect L"
                 HorizontalAlignment="Left"
                 Margin="173,85,0,0"
-                VerticalAlignment="Top" 
+                VerticalAlignment="Top"
                 IsEnabled="False"
-                x:Name="BCL"/>
+                x:Name="BCL" />
         <Button Content="Connect R"
                 HorizontalAlignment="Left"
                 Margin="235,85,0,0"
                 VerticalAlignment="Top"
                 IsEnabled="False"
                 x:Name="BCR"
-                Click="BCR_Click"/>
+                Click="BCR_Click" />
+        <Button Content="¤"
+                HorizontalAlignment="Left"
+                Margin="143,45,0,0"
+                VerticalAlignment="Top"
+                Width="32"
+                Height="22" 
+                FontSize="15"
+                Click="Button_Click"/>
 
     </Grid>
 </UserControl>

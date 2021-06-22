@@ -4,5 +4,8 @@ FY:\cs\ApexGloves\src\c#_code\ApexGUI\MainWindow.xaml;;
 FY:\cs\ApexGloves\src\c#_code\ApexGUI\UCs\Connections.xaml;;
 FY:\cs\ApexGloves\src\c#_code\ApexGUI\UCs\DelimitorModels\JointInput.xaml;;
 FY:\cs\ApexGloves\src\c#_code\ApexGUI\UCs\Delimitors.xaml;;
+FY:\cs\ApexGloves\src\c#_code\ApexGUI\UCs\InputDataViewer.xaml;;
 FY:\cs\ApexGloves\src\c#_code\ApexGUI\UCs\MainTabViewer.xaml;;
+FY:\cs\ApexGloves\src\c#_code\ApexGUI\UCs\Anatomics\Hand.xaml;;
+FY:\cs\ApexGloves\src\c#_code\ApexGUI\UCs\Anatomics\Joint.xaml;;
 

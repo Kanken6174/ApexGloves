@@ -26,20 +26,9 @@
                     <local:Delimitors x:Name="MyDelimitors"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="View Input Data">
-                <Grid Background="#FFE5E5E5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="41*" />
-                        <ColumnDefinition Width="356*" />
-                    </Grid.ColumnDefinitions>
-                </Grid>
-            </TabItem>
             <TabItem Header="Set joint positions">
                 <Grid Background="#FFE5E5E5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="41*" />
-                        <ColumnDefinition Width="356*" />
-                    </Grid.ColumnDefinitions>
+                    <local:InputDataViewer />
                 </Grid>
             </TabItem>
             <TabItem Header="Settings">

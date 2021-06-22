@@ -15,7 +15,7 @@ namespace ApexLogic.Delimiters
         private string StrValue; //Value read as string.
         public int InputValue;  //Value read as int (0-1023) for arduino
         private List<int> ValuesOverTime;   //Values over time, used for error correction.
-        InputData MySource; //Source type. Would usually be a potentiometer or Pad.
+        public InputData MySource; //Source type. Would usually be a potentiometer or Pad.
 
         public Delimiter(char Indexer)
         {

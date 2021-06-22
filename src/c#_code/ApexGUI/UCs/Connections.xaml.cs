@@ -103,5 +103,10 @@ namespace ApexGUI.UCs
             if(MyParent is not null)
                 MyParent.Tabber.SelectedIndex = 1;
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            FindGloves();
+        }
     }
 }

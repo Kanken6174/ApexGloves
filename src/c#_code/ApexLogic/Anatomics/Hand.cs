@@ -16,7 +16,7 @@ namespace ApexLogic.Anatomics
     {
         public char HandType;
         public Point3d HandPos = new();
-        Dictionary<int,Finger> Fingers = new();
+        public Dictionary<int,Finger> Fingers = new();
         public Dictionary<int, InputData> MyInputs = new();
         public List<Delimiter> MyDelimiters = new();
         public SerialPort Port;

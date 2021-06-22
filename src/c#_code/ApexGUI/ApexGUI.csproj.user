@@ -7,6 +7,12 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="UCs\Anatomics\Hand.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UCs\Anatomics\Joint.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="UCs\Connections.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -14,6 +20,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="UCs\Delimitors.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UCs\InputDataViewer.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="UCs\MainTabViewer.xaml.cs">
@@ -24,6 +33,12 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="UCs\Anatomics\Hand.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UCs\Anatomics\Joint.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="UCs\Connections.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -31,6 +46,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UCs\Delimitors.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UCs\InputDataViewer.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UCs\MainTabViewer.xaml">

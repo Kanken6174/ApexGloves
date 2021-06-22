@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ApexLogic.Anatomics
 {
-    class DoubleJoint : Joint
+    public class DoubleJoint : Joint
     {
         public float YRawValue;
         public float YAngle;

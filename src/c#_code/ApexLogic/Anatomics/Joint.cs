@@ -8,7 +8,7 @@ using ApexLogic;
 
 namespace ApexLogic.Anatomics
 {
-    class Joint
+    public class Joint
     {
         public float RawAngle = Settings.DefaultMinAngleRaw; //0-1023
         public float ClosedRaw = 500;

@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="ApexGUI.UCs.InputDataViewer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:ApexGUI.UCs"
+             xmlns:delimitors="clr-namespace:ApexGUI.UCs.DelimitorModels"
+             xmlns:Ananotmics="clr-namespace:ApexGUI.UCs.Anatomics"
+             mc:Ignorable="d"
+             d:DesignHeight="350"
+             d:DesignWidth="800"
+             Background="Gray">
+    <Grid>
+        <Ananotmics:Hand Margin="500,0,0,0"
+                         x:Name="RightHand" />
+        <ComboBox HorizontalAlignment="Left"
+                  VerticalAlignment="Top"
+                  Width="100"
+                  x:Name="RightHandControllers" />
+        <Rectangle HorizontalAlignment="Left"
+                   Height="350"
+                   Stroke="Black"
+                   VerticalAlignment="Center"
+                   Width="100" />
+        <Button Content="Auto-set"
+                HorizontalAlignment="Left"
+                Margin="1,328,0,0"
+                VerticalAlignment="Top"
+                Width="98"
+                Height="21"
+                Click="Button_Click" />
+    </Grid>
+</UserControl>

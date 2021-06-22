@@ -17,7 +17,11 @@
                   Margin="10,153,0,0"
                   VerticalAlignment="Top"
                   Width="120"
-                  x:Name="SourceCOMBOX" />
+                  x:Name="SourceCOMBOX"
+                  SelectedIndex="0">
+            <ComboBoxItem Content="Right Hand" />
+            <ComboBoxItem Content="Left Hand" />
+        </ComboBox>
         <Button Content="Get Snap"
                 HorizontalAlignment="Left"
                 Margin="135,153,0,0"
@@ -37,16 +41,31 @@
                    VerticalAlignment="Center"
                    Width="375" />
         <ComboBox HorizontalAlignment="Left"
-                  Margin="424,67,0,0"
+                  Margin="535,25,0,0"
                   VerticalAlignment="Top"
                   Width="178"
-                  x:Name="Inputs" />
+                  x:Name="Inputs"
+                  SelectionChanged="Inputs_SelectionChanged" />
         <Rectangle HorizontalAlignment="Left"
-                   Height="177"
-                   Margin="424,153,0,0"
+                   Height="97"
+                   Margin="424,58,0,0"
                    Stroke="Black"
                    VerticalAlignment="Top"
                    Width="356">
         </Rectangle>
+        <TextBlock HorizontalAlignment="Left"
+                   Margin="436,28,0,0"
+                   Text="Input Type:"
+                   TextWrapping="Wrap"
+                   VerticalAlignment="Top" />
+        <TextBox HorizontalAlignment="Left"
+                 Margin="426,59,0,0"
+                 Text=""
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Width="354"
+                 Height="95"
+                 x:Name="DescritpionBox"
+                 TextChanged="DescritpionBox_TextChanged" />
     </Grid>
 </UserControl>
