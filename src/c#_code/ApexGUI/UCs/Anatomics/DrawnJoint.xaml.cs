@@ -20,10 +20,14 @@ namespace ApexGUI.UCs.Anatomics
     /// <summary>
     /// Interaction logic for Joint.xaml
     /// </summary>
-    public partial class Joint : UserControl
+    public partial class DrawnJoint : UserControl
     {
-        public ApexLogic.Anatomics.Joint joint;
-        public Joint(ApexLogic.Anatomics.Joint joint)
+        public Joint joint;
+        public DrawnJoint()
+        {
+            InitializeComponent();
+        }
+        public DrawnJoint(Joint joint)
         {
             this.joint = joint;
             InitializeComponent();

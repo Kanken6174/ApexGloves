@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
 Y:\cs\ApexGloves\src\c#_code\ApexGUI\App.xaml
-8143911260
+8-1583148172
 
-101152371136
+101434016292
 196759291597
-MainWindow.xaml;UCs\Anatomics\Hand.xaml;UCs\Anatomics\Joint.xaml;UCs\Connections.xaml;UCs\DelimitorModels\JointInput.xaml;UCs\Delimitors.xaml;UCs\InputDataViewer.xaml;UCs\MainTabViewer.xaml;
+MainWindow.xaml;UCs\Anatomics\DrawnHand.xaml;UCs\Anatomics\DrawnJoint.xaml;UCs\Connections.xaml;UCs\DelimitorModels\JointInput.xaml;UCs\Delimitors.xaml;UCs\InputDataViewer.xaml;UCs\MainTabViewer.xaml;
 
 False
 

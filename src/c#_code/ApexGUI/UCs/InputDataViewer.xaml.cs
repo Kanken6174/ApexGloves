@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ApexGUI.UCs.Anatomics;
 using ApexLogic;
 using ApexLogic.Anatomics;
 
@@ -31,7 +32,14 @@ namespace ApexGUI.UCs
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            Hand ActiveHand;
+            if (HandPicker.SelectedIndex == 0)
+                ActiveHand = Master.RightHand;
+            else
+                ActiveHand = Master.LefttHand;
 
+            RightHand = new DrawnHand(ActiveHand);
+            RightHand.AddJoint();
         }
     }
 }

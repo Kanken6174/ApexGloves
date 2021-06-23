@@ -44,7 +44,7 @@ Y:\cs\ApexGloves\src\c#_code\ApexGUI\obj\Debug\net5.0-windows\UCs\DelimitorModel
 Y:\cs\ApexGloves\src\c#_code\ApexGUI\obj\Debug\net5.0-windows\UCs\DelimitorModels\JointInput.baml
 Y:\cs\ApexGloves\src\c#_code\ApexGUI\obj\Debug\net5.0-windows\UCs\InputDataViewer.g.cs
 Y:\cs\ApexGloves\src\c#_code\ApexGUI\obj\Debug\net5.0-windows\UCs\InputDataViewer.baml
-Y:\cs\ApexGloves\src\c#_code\ApexGUI\obj\Debug\net5.0-windows\UCs\Anatomics\Hand.g.cs
-Y:\cs\ApexGloves\src\c#_code\ApexGUI\obj\Debug\net5.0-windows\UCs\Anatomics\Hand.baml
-Y:\cs\ApexGloves\src\c#_code\ApexGUI\obj\Debug\net5.0-windows\UCs\Anatomics\Joint.g.cs
-Y:\cs\ApexGloves\src\c#_code\ApexGUI\obj\Debug\net5.0-windows\UCs\Anatomics\Joint.baml
+Y:\cs\ApexGloves\src\c#_code\ApexGUI\obj\Debug\net5.0-windows\UCs\Anatomics\DrawnHand.g.cs
+Y:\cs\ApexGloves\src\c#_code\ApexGUI\obj\Debug\net5.0-windows\UCs\Anatomics\DrawnJoint.g.cs
+Y:\cs\ApexGloves\src\c#_code\ApexGUI\obj\Debug\net5.0-windows\UCs\Anatomics\DrawnHand.baml
+Y:\cs\ApexGloves\src\c#_code\ApexGUI\obj\Debug\net5.0-windows\UCs\Anatomics\DrawnJoint.baml

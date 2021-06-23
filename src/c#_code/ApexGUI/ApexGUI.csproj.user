@@ -7,10 +7,10 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="UCs\Anatomics\Hand.xaml.cs">
+    <Compile Update="UCs\Anatomics\DrawnHand.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UCs\Anatomics\Joint.xaml.cs">
+    <Compile Update="UCs\Anatomics\DrawnJoint.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="UCs\Connections.xaml.cs">
@@ -33,10 +33,10 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UCs\Anatomics\Hand.xaml">
+    <Page Update="UCs\Anatomics\DrawnHand.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UCs\Anatomics\Joint.xaml">
+    <Page Update="UCs\Anatomics\DrawnJoint.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UCs\Connections.xaml">
