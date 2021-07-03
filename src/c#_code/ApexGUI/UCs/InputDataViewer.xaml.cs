@@ -38,8 +38,13 @@ namespace ApexGUI.UCs
             else
                 ActiveHand = Master.LefttHand;
 
-            RightHand = new DrawnHand(ActiveHand);
-            RightHand.AddJoint();
+            RightHand.ThisHand = ActiveHand;
+            RightHand.Draw();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            RightHand.UpdateAll();
         }
     }
 }

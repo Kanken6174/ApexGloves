@@ -109,7 +109,7 @@ namespace ApexGUI.UCs.Anatomics {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/ApexGUI;component/ucs/anatomics/drawnhand.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/ApexGUI;V1.0.0.0;component/ucs/anatomics/drawnhand.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\UCs\Anatomics\DrawnHand.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

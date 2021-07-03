@@ -32,5 +32,13 @@ namespace ApexGUI.UCs.Anatomics
             this.joint = joint;
             InitializeComponent();
         }
+
+        public void UpdateLength()
+        {
+            if(joint != null)
+            {
+               this.Height = joint.AnglePercentage*75;
+            }
+        }
     }
 }

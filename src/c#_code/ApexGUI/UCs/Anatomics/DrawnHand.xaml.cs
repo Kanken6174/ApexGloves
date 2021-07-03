@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ApexLogic.Anatomics;
 using ApexLogic;
+using System.Runtime.CompilerServices;
 
 namespace ApexGUI.UCs.Anatomics
 {
@@ -26,7 +27,8 @@ namespace ApexGUI.UCs.Anatomics
     {
 
         Master Master => (App.Current as App).Master;
-        Hand ThisHand;
+        public Hand ThisHand;
+        private bool drawn = false;
         int joints = 5;
 
         public DrawnHand()
@@ -40,11 +42,6 @@ namespace ApexGUI.UCs.Anatomics
             InitializeComponent();
         }
 
-        public void SetHand(ApexLogic.Anatomics.Hand hand)
-        {
-            ThisHand = hand;
-        }
-
 
 
         public async void AutoPlace()
@@ -53,15 +50,18 @@ namespace ApexGUI.UCs.Anatomics
             {
                 for (int u = 0; u < ((i == 0) ? 2 : 3); u++)
                 {
-                    await Task.Delay(200);
+                    await Task.Delay(20);
                     PlaceJoint("Root" + i);
                 }
             }
         }
 
-        public void AddJoint()
+        public void Draw()
         {
-            AutoPlace();
+            if(!drawn)
+                AutoPlace();
+
+            drawn = true;
         }
 
         private void PlaceJoint(string RootName)
@@ -90,14 +90,18 @@ namespace ApexGUI.UCs.Anatomics
             return root;
         }
 
-        public void DrawHand()
+        public void UpdateAll()
         {
-            HandCanvas.Children.Clear();
-            foreach (KeyValuePair<int, ApexLogic.Anatomics.Finger> aFinger in ThisHand.Fingers)
+            for (int i = joints - 1; i >= 0; i--)
             {
-                foreach(KeyValuePair<int, ApexLogic.Anatomics.Joint> aJoint in aFinger.Value.FingerJoints)
+                string RootName = $"Root{i}";
+                FrameworkElement root = HandCanvas.FindName(RootName) as Ellipse;
+                DrawnJoint rootChild = (DrawnJoint)HandCanvas.FindName(root.Tag.ToString());
+                rootChild.UpdateLength();
+                while (rootChild.Tag != null)
                 {
-
+                    rootChild = (DrawnJoint)HandCanvas.FindName(rootChild.Tag.ToString());
+                    rootChild.UpdateLength();
                 }
             }
         }

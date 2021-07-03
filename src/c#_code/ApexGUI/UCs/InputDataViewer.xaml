@@ -17,9 +17,10 @@
                   VerticalAlignment="Top"
                   Width="100"
                   x:Name="HandPicker"
-                  SelectedIndex="0">
-            <ComboBoxItem Content="Right"/>
-            <ComboBoxItem Content="Left"/>
+                  SelectedIndex="0"
+                  Margin="0,3,0,0">
+            <ComboBoxItem Content="Right" />
+            <ComboBoxItem Content="Left" />
         </ComboBox>
         <Rectangle HorizontalAlignment="Left"
                    Height="350"
@@ -33,5 +34,10 @@
                 Width="98"
                 Height="21"
                 Click="Button_Click" />
+        <Button Content="Update positions"
+                HorizontalAlignment="Left"
+                Margin="190,328,0,0"
+                VerticalAlignment="Top"
+                Click="Button_Click_1" />
     </Grid>
 </UserControl>
