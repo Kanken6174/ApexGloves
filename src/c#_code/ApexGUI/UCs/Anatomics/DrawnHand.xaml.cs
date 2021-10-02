@@ -42,7 +42,7 @@ namespace ApexGUI.UCs.Anatomics
             InitializeComponent();
         }
 
-
+        
 
         public async void AutoPlace()
         {
