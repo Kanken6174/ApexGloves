@@ -9,11 +9,11 @@
  * 
  */
 
-#include <Wire.h>       // This library allows you to communicate with I2C devices.
+//#include <Wire.h>       // This library allows you to communicate with I2C devices.
 #include <CD74HC4067.h> // multiplexer lib
 #include <hmc5883L.hpp>
 #include <registers.hpp>
-#include <Arduino.h>
+#include "MPU6050_6Axis_MotionApps612.h"
 
 #ifdef ESP32
     #include "ESP32_pins.hpp"
@@ -62,7 +62,7 @@ String ReadAvailableFromSerial();
 #endif
 
 String readFingers(int* indexerValue, CD74HC4067 multiplexer);
-String readMPU6050(int* indexerValue);
+//String readMPU6050(int* indexerValue);
 
 /**
  * @brief This function is used for communication with external I2C devices by directly writing to their registers

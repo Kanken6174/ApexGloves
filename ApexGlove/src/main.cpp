@@ -54,7 +54,7 @@ void ProcessSerialPackets(char incoming)
   {
     dataToSendSerial += readFingers(&indexerValue, multiplexer);
     DEBUG dataToSendSerial += " | ";
-    dataToSendSerial += readMPU6050(&indexerValue);
+    //dataToSendSerial += readMPU6050(&indexerValue);
     DEBUG dataToSendSerial += " | ";
     dataToSendSerial += magnetometer.readValues(&indexerValue,marker);
     #ifdef BLE_COMAPTIBLE
