@@ -71,7 +71,7 @@ void ProcessSerialPackets(char incoming)
     if(dmpReady){
       mpu.dmpGetCurrentFIFOPacket(fifoBuffer);
       mpu.dmpGetQuaternion(&q, fifoBuffer);
-      dataToSendSerial += String(q.w)+"W"+String(q.x)+"X"+String(q.y)+"Y"+String(q.z)+"Z";
+      dataToSendSerial += "W"+String(q.w)+"X"+String(q.x)+"Y"+String(q.y)+"Z"+String(q.z);
     }
     DEBUG dataToSendSerial += " | ";
     dataToSendSerial += magnetometer.readValues(&indexerValue,marker);
